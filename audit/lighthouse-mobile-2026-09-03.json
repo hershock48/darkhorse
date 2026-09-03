@@ -1,0 +1,322 @@
+{
+  "source": "Lighthouse 12.8.2, mobile, simulated throttling, run locally",
+  "fetchTime": "2026-09-03T23:19:24.216Z",
+  "url": "https://www.darkhorsebrewery.com/",
+  "scores": {
+    "performance": 69,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": {
+      "score": 0.4,
+      "value": "3.3 s"
+    },
+    "largest-contentful-paint": {
+      "score": 0.08,
+      "value": "6.6 s"
+    },
+    "total-blocking-time": {
+      "score": 1,
+      "value": "60 ms"
+    },
+    "cumulative-layout-shift": {
+      "score": 0.95,
+      "value": "0.076"
+    },
+    "speed-index": {
+      "score": 0.9,
+      "value": "3.3 s"
+    },
+    "interactive": {
+      "score": 0,
+      "value": "42.7 s"
+    },
+    "total-byte-weight": {
+      "score": 0.5,
+      "value": "Total size was 16,980 KiB"
+    },
+    "dom-size": {
+      "score": 0.5,
+      "value": "1,055 elements"
+    },
+    "errors-in-console": {
+      "score": 0
+    }
+  },
+  "resourceSummary": [
+    {
+      "type": "Total",
+      "requests": 250,
+      "kb": 16980
+    },
+    {
+      "type": "Image",
+      "requests": 53,
+      "kb": 10037
+    },
+    {
+      "type": "Media",
+      "requests": 9,
+      "kb": 4553
+    },
+    {
+      "type": "Script",
+      "requests": 104,
+      "kb": 1435
+    },
+    {
+      "type": "Other",
+      "requests": 79,
+      "kb": 630
+    },
+    {
+      "type": "Document",
+      "requests": 1,
+      "kb": 256
+    },
+    {
+      "type": "Font",
+      "requests": 3,
+      "kb": 67
+    },
+    {
+      "type": "Stylesheet",
+      "requests": 1,
+      "kb": 1
+    },
+    {
+      "type": "Third-party",
+      "requests": 243,
+      "kb": 16686
+    }
+  ],
+  "thirdParty": [
+    {
+      "entity": "bestfreecdn.com",
+      "kb": 660,
+      "blockingMs": 103
+    },
+    {
+      "entity": "Wix",
+      "kb": 4534,
+      "blockingMs": 17
+    },
+    {
+      "entity": "Instagram",
+      "kb": 11449,
+      "blockingMs": 0
+    },
+    {
+      "entity": "Sentry",
+      "kb": 42,
+      "blockingMs": 0
+    },
+    {
+      "entity": "geojs.io",
+      "kb": 1,
+      "blockingMs": 0
+    }
+  ],
+  "failingAudits": [
+    {
+      "id": "errors-in-console",
+      "title": "Browser errors were logged to the console",
+      "score": 0,
+      "displayValue": null
+    },
+    {
+      "id": "interactive",
+      "title": "Time to Interactive",
+      "score": 0,
+      "displayValue": "42.7 s"
+    },
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "score": 0,
+      "displayValue": "3.0 s"
+    },
+    {
+      "id": "largest-contentful-paint-element",
+      "title": "Largest Contentful Paint element",
+      "score": 0,
+      "displayValue": "6,600 ms"
+    },
+    {
+      "id": "unused-javascript",
+      "title": "Reduce unused JavaScript",
+      "score": 0,
+      "displayValue": "Est savings of 760 KiB",
+      "savingsKB": 760
+    },
+    {
+      "id": "image-delivery-insight",
+      "title": "Improve image delivery",
+      "score": 0,
+      "displayValue": "Est savings of 965 KiB"
+    },
+    {
+      "id": "lcp-discovery-insight",
+      "title": "LCP request discovery",
+      "score": 0,
+      "displayValue": null
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree",
+      "score": 0,
+      "displayValue": null
+    },
+    {
+      "id": "largest-contentful-paint",
+      "title": "Largest Contentful Paint",
+      "score": 0.08,
+      "displayValue": "6.6 s"
+    },
+    {
+      "id": "first-contentful-paint",
+      "title": "First Contentful Paint",
+      "score": 0.4,
+      "displayValue": "3.3 s"
+    },
+    {
+      "id": "uses-long-cache-ttl",
+      "title": "Serve static assets with an efficient cache policy",
+      "score": 0.5,
+      "displayValue": "165 resources found"
+    },
+    {
+      "id": "total-byte-weight",
+      "title": "Avoid enormous network payloads",
+      "score": 0.5,
+      "displayValue": "Total size was 16,980 KiB"
+    },
+    {
+      "id": "unused-css-rules",
+      "title": "Reduce unused CSS",
+      "score": 0.5,
+      "displayValue": "Est savings of 43 KiB",
+      "savingsKB": 43
+    },
+    {
+      "id": "modern-image-formats",
+      "title": "Serve images in next-gen formats",
+      "score": 0.5,
+      "displayValue": "Est savings of 3,250 KiB",
+      "savingsKB": 3250
+    },
+    {
+      "id": "uses-optimized-images",
+      "title": "Efficiently encode images",
+      "score": 0.5,
+      "displayValue": "Est savings of 6 KiB",
+      "savingsKB": 6
+    },
+    {
+      "id": "uses-responsive-images",
+      "title": "Properly size images",
+      "score": 0.5,
+      "displayValue": "Est savings of 809 KiB",
+      "savingsKB": 809
+    },
+    {
+      "id": "duplicated-javascript",
+      "title": "Remove duplicate modules in JavaScript bundles",
+      "score": 0.5,
+      "displayValue": "Est savings of 28 KiB",
+      "savingsKB": 28
+    },
+    {
+      "id": "legacy-javascript",
+      "title": "Avoid serving legacy JavaScript to modern browsers",
+      "score": 0.5,
+      "displayValue": "Est savings of 20 KiB",
+      "savingsKB": 20
+    },
+    {
+      "id": "dom-size",
+      "title": "Avoid an excessive DOM size",
+      "score": 0.5,
+      "displayValue": "1,055 elements"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "score": 0.5,
+      "displayValue": "Est savings of 1,627 KiB"
+    },
+    {
+      "id": "duplicated-javascript-insight",
+      "title": "Duplicated JavaScript",
+      "score": 0.5,
+      "displayValue": "Est savings of 19 KiB"
+    },
+    {
+      "id": "legacy-javascript-insight",
+      "title": "Legacy JavaScript",
+      "score": 0.5,
+      "displayValue": "Est savings of 21 KiB"
+    },
+    {
+      "id": "max-potential-fid",
+      "title": "Max Potential First Input Delay",
+      "score": 0.83,
+      "displayValue": "150 ms"
+    }
+  ],
+  "unusedJavascriptTop": [
+    {
+      "url": "https://age.bestfreecdn.com/storage/js/age-4773.js",
+      "totalKB": 655,
+      "wastedKB": 567
+    },
+    {
+      "url": "https://static.parastorage.com/services/events-viewer/1.4317.0/client-viewer/181.chunk.min.js",
+      "totalKB": 36,
+      "wastedKB": 36
+    },
+    {
+      "url": "https://static.parastorage.com/services/wix-thunderbolt/dist/group_6.b061daac.chunk.min.js",
+      "totalKB": 56,
+      "wastedKB": 34
+    },
+    {
+      "url": "https://static.parastorage.com/services/form-app/1.3010.0/client-viewer/form-app-wix-ricos-viewer.chunk.min.js",
+      "totalKB": 34,
+      "wastedKB": 34
+    },
+    {
+      "url": "https://browser.sentry-cdn.com/7.120.3/bundle.tracing.es5.min.js",
+      "totalKB": 35,
+      "wastedKB": 24
+    }
+  ],
+  "largestImages": [
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/724577429_18604728553051511_7763328693881472179_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzkyMDkwNzM5MTY0NjExMDQwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uRkVFRC5DMyJ9&_nc_ohc=qXEfyCf25UEQ7kNvwE1AFo6&_nc_oc=AdrJkCDMO6WyjQVBATJ1gDKOs6J8CEsdXI1U0g_9izwBXpjoSjnvwX6kuIAc0mSyr7E&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQIq4vca2rX-zi5r0a9B6tiFvRwVlhrHhfgZ9sbwBWUajUwfKZS5cjQwQM5IC_3FrsMKIazaii13&oh=00_AQKwLSJ2TuxqBq0k8rpglDIn3BFUawKPKv09v-Vuna4Jeg&oe=6A9FB53E",
+      "totalKB": 1455
+    },
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t39.30808-6/710745569_1445835464254145_8233734213273301732_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzkwODc4MjUwODI4MzY2NzYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_ohc=Hqyj2OHEbBIQ7kNvwH3H7IC&_nc_oc=AdpXBDrg_IBXZxLwRBQFeSGlICR8sU-a5ii6C3gGKwmv-pcufdcY7uyC_UFxeypPnoY&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQIdbDyy4S3HlsDvkfCU13118pa2s6isahy0XyrWkzGxHDyV6qAMNzoa84XL5PLm0yxq4kzrRQ_R&oh=00_AQLEIm2XBXP_gsv705sUYpCEmkrwaYI-vCrNyqRew3svIw&oe=6A9FBADC",
+      "totalKB": 835
+    },
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/741284941_18611641162051511_8785425953670625639_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzkzNjE2NjQ3MzIxNDg2MTI2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_ohc=KWQTzgv3h90Q7kNvwH4yYjX&_nc_oc=Adq6GCEqTxJlxdvNKqQiEdh0gup17lysYBP9ISHZibVJjdL-mdEpMbAXWWQvOe5OgCE&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQLfbxvvZzwgSifo6EMBLLOcOTX2qlkJNhYOZAt3CIih4lHx_f3X0ndHUpR3oZ47UtsiYKfKHbl_&oh=00_AQJZEIflcwLLwMeaw7U9YZoIHht1DgEJ_epVM-zffy-HzQ&oe=6A9FDA99",
+      "totalKB": 564
+    },
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/791327198_18630520756051511_3693745678224678275_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzk3NzYyNjUyMjc2NzQ3MjU5MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0xJUFMuQzMifQ%3D%3D&_nc_ohc=lq5ooblailAQ7kNvwFO3Udj&_nc_oc=Adr0W5n6oJHlutULgdwyVfbSooVoE5xk7uoOlh9ET9l4rpoFOxAqwCerZ3DexkKYAvk&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQJlw_XfjWF7miJ27xxzBZ33i2g5t7KjP79egCVC8b_j0uFoOSsu67KfKZmtIwgdq__i02u9M6Dl&oh=00_AQI5qeaxzqzfLMkDpYOqCyAGGVOQzONRkuU4HSOQrZ1Ieg&oe=6A9FE30A",
+      "totalKB": 638
+    },
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t39.30808-6/703762869_1438547694982922_8147075194176188231_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzkwMjg1MzU5ODYxOTEzOTc0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uRkVFRC5DMyJ9&_nc_ohc=1lBzpbGYEYAQ7kNvwEXnsgE&_nc_oc=AdpRSd3rQpVuLufUKS6X1tgMFUErZxXzRKNMNdQfes1kJtIBJX6Z26EOFN201PtrleQ&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQJuJu9A0L--2jsNAIAVax503W3mkMFnHr3r0VUdN-rMRXFssP0Q9nJzWiRSs0iThCjosfoKKsOm&oh=00_AQIHwgCGLf38SSXJJt40_BipBdTP5Zh470l0Anm_6Nzn7A&oe=6A9FE5F8",
+      "totalKB": 565
+    },
+    {
+      "url": "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/779017702_18625538302051511_5850279945570672824_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzk2NTkxMzcyNTQ1NzQ1Mjc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uRkVFRC5DMyJ9&_nc_ohc=rQQVmQeuqXYQ7kNvwE0Khiw&_nc_oc=Adp8o71yfYBA2jaD0DngjKYZE0AFkH7Kx3Zx7fK7nH0qdcHKxCIRvdz1gDZKoYBFjbw&_nc_zt=23&_nc_ht=scontent-den2-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=M8LJ6lppsM2QEsf9_DUuCw&_nc_tpa=Q5bMBQL4RQhw74ZfxJ0uDLV_qJAa3RHfxKwPjsJDrdWGzL-QYJ596-D34P8tq4CpGMkFxhnyMG-CsvKW&oh=00_AQJ01h84UoM_Lke6IlnelbhFjf7BVrEwoEt0LiFPZ0TNBA&oe=6A9FB944",
+      "totalKB": 534
+    }
+  ]
+}
