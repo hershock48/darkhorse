@@ -174,7 +174,9 @@ A first-party script call that fails on the platform it was written for, in prod
 
 ### 7. Accessibility
 
-Lighthouse: 100. That number is the automated floor and it is honest to report it. What it does not catch is above: alt text that is present but meaningless (4.3), a heading structure that is decoration (1.1), a phone number that is not a link (2.5), a menu that may not open (2.6). The house auditor, axe at 390 and 1440 on eight routes, is running as this is written and its result is appended below when it lands.
+Lighthouse: 100. That number is the automated floor and it is honest to report it. What it does not catch is above: alt text that is present but meaningless (4.3), a heading structure that is decoration (1.1), a phone number that is not a link (2.5), a menu that may not open (2.6).
+
+**House auditor (`glaze/scripts/audit.mjs`, axe WCAG 2.1 A/AA at 390 and 1440, eight routes):** 0 violations, no horizontal overflow, no 4xx, on the 11 page loads that completed. **5 of 16 loads never reached network-idle inside 30 seconds** (`/` at both widths, `/about` at both, `/contact` at 390) and were skipped by the auditor, which is a finding on its own: the homepage does not stop loading. The Wix SDK console error fired on every route that did load.
 
 ---
 
@@ -212,11 +214,45 @@ Concrete, and short because the demo will say the rest.
 
 ## What it costs
 
-Open with Kevin. The menu's Baker's Dozen ($2,000 plus $150) covers everything above except the Mug Club system and the ordering hostname, which make this a Custom Order. `proposal.md` requires a number, not "starting from," and a sourced market anchor with a link under it. Both are decisions for Kevin before the proposal page is written.
+**Ruled by Kevin, 2026-09-03: priced like Griffin Claw, $4,500 build plus $195 a month.** That is what the proposal says. The proposal's price card lists "the Mug Club system" inside the $4,500, meaning online signup and renewal with a card on file, a member number, a December waitlist and an owner count screen. If that scope is more than the number is meant to carry, the line to change is the `.pricebox .l` text in `pitch/darkhorse/index.html` and the Mug Club row of the build table, before anything is sent.
 
 ## What happens next
 
-One action, per the ruling for US-market proposals: book the call at glazedweb.com/schedule. The demo and proposal page follow the Griffin Claw structure in `glaze/proposal.md` (proposal at the root of `darkhorse.glazedweb.com`, demo at `/demo`, `beforeFiles` host rewrites, `noindex` on the pitch host and the `.vercel.app` host).
+One action, per the ruling for US-market proposals: book the call at glazedweb.com/schedule. The proposal page follows the Griffin Claw structure in `glaze/proposal.md`: proposal at the root of `darkhorse.glazedweb.com`, demo at `/demo`, `noindex` on the pitch host and the `.vercel.app` host.
+
+---
+
+## The proposal
+
+`pitch/darkhorse/index.html`, one self-contained file, 50KB, no build step. Stylesheet and the animated donut mark lifted verbatim from `griffin-claw-rebuild/pitch/griffin-claw/index.html`, then stripped of the cost calculator and the two-version grid this proposal does not use. Six sections in the `proposal.md` order: the question, the findings (nine claim cards, each with a link that proves it), ownership, the build table, the demo, the price, next steps.
+
+**Rendered and looked at before it was committed** (`tools/render.mjs`): 1280, 390 and 320 wide, zero page errors, zero broken images, no horizontal overflow after the `overflow-wrap` fix noted in the CSS, no em or en dashes, every outbound link returns 200 except Toast (403 to curl, bot-blocking, renders in a browser) and `/blog/` (404 on purpose, that is the finding). Copy swept for "in fairness / to be fair / admittedly / of course / that said" (none), British spellings (none), and repetition ("your own" cut from 8 to 3, "actually" from 4 to 2).
+
+**The link card** is rendered from `pitch/darkhorse/og-card.html` to `pitch/darkhorse/og.jpg` by the same script, 1200 x 630, 37KB, headline inside the center 630px band. Glazed's own icons sit next to it (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png` lifted from glazedweb `public/`), declared with absolute URLs so nothing falls back to the origin root.
+
+**Hosting:** `vercel.json` rewrites `/` to the pitch file and sends `X-Robots-Tag: noindex, nofollow` on every path. Needs a Vercel project pointed at this repo and `darkhorse.glazedweb.com` attached to it. Not done yet.
+
+### One placeholder, and it blocks sending
+
+Section four links to `darkhorse.glazedweb.com/demo` and describes it as built. **It is not built.** The HTML carries a `PLACEHOLDER` comment at that spot. Per `proposal.md` the three deliverables go out together, so the send order is: build the demo on the rows in section three (at minimum the menu page, hours with open/closed logic, events with the weekday derived from the date, and a Mug Club signup and renewal flow, since the demo card promises "a Mug Club you can join from a barstool"), deploy it at `/demo`, then send.
+
+### Facts the proposal states that were verified this session
+
+- Domain: `darkhorsebrewery.com` registered through Network Solutions, created 2005-02-11, expires 2029-02-11, nameservers `ns11/ns12.worldnic.com` (Verisign RDAP). Theirs, not Wix's.
+- Wix cannot be exported: "Your site must run on Wix's servers," Wix Help Center, [Exporting or Embedding Your Wix Site Elsewhere](https://support.wix.com/en/article/exporting-or-embedding-your-wix-site-elsewhere).
+- Everything in sections one and two of the proposal traces to a numbered finding above.
+
+### Before you send it (`proposal.md` checklist)
+
+- [ ] The demo is deployed at `/demo` and every route loads. **Blocking.**
+- [ ] Kevin confirms the Mug Club system belongs inside $4,500, or the two lines named above are changed.
+- [ ] Vercel project created, `darkhorse.glazedweb.com` attached, `/` serves the proposal, `/pitch/darkhorse/og.jpg` returns 200 with an image type.
+- [ ] Pitch host and `.vercel.app` host both send `noindex` (the header is in `vercel.json`; confirm on the deployed URL).
+- [ ] Demo card exists and is the client's, separate from the proposal card (`link-cards.md`).
+- [ ] Pasted into Messages and one non-Apple surface, and looked at.
+- [ ] The Toast "not accepting online orders" observation re-checked at an off-peak hour; if it was a one-off, soften finding two from a pattern to an instance (it is written as an instance now).
+- [ ] The mobile menu (2.6) opened on a physical phone. It is deliberately **not** in the proposal.
+- [ ] Read once as the owner, not the builder.
 
 ---
 
@@ -246,13 +282,19 @@ Kept as retractions, per `glaze.md`, so nobody re-derives them.
 
 | Path | What it is |
 |---|---|
-| `README.md` | This audit |
+| `README.md` | This audit and the proposal notes |
+| `pitch/darkhorse/index.html` | The proposal page, served at `/` on the pitch host |
+| `pitch/darkhorse/og-card.html` | Source for the proposal's link card |
+| `pitch/darkhorse/og.jpg` | The rendered link card, 1200 x 630 |
+| `pitch/darkhorse/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon.png` | Glazed's icons, lifted not redrawn |
+| `tools/render.mjs` | Renders the card and screenshots the proposal at three widths; run from the glazedweb repo so playwright-core resolves |
+| `vercel.json` | Root rewrite to the pitch file, `noindex` header on every path |
 | `audit/lighthouse-mobile-2026-09-03.json` | Compact Lighthouse summary: scores, metrics, failing audits, third-party breakdown, largest resources |
 
 ## Next steps
 
-- [ ] Kevin: confirm this repo is the demo rebuild (Griffin Claw pattern) and rule on price.
+- [ ] Build the demo (Griffin Claw pattern, their own look rebuilt on their own bones) and deploy it at `/demo`. Blocks sending.
+- [ ] Intake per `glaze/intake.md` before building: the three menus, the Mug Club rules and price, logo files and photography, Untappd for Business and Toast access.
 - [ ] Open the mobile menu on a real phone; promote or retire 2.6.
 - [ ] Re-check Toast ordering availability at an off-peak hour.
-- [ ] Append the axe auditor result to section 7.
-- [ ] Intake per `glaze/intake.md` before building anything: real photography, logo files, the actual Mug Club rules and price, the breakfast menu, who owns the domain.
+- [ ] Vercel project plus `darkhorse.glazedweb.com`.

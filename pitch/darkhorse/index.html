@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Glazed Web × Dark Horse · Proposal</title>
+<meta name="description" content="A website proposal for Dark Horse Brewing Company. Every claim links to the evidence.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Glazed Web">
+<meta property="og:url" content="https://darkhorse.glazedweb.com/">
+<meta property="og:title" content="Do you own your website?">
+<meta property="og:description" content="A website proposal for Dark Horse Brewing Company, where every claim links to the proof.">
+<meta property="og:image" content="https://darkhorse.glazedweb.com/pitch/darkhorse/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Do you own your website? A proposal from Glazed Web.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Do you own your website?">
+<meta name="twitter:description" content="A website proposal for Dark Horse Brewing Company, where every claim links to the proof.">
+<meta name="twitter:image" content="https://darkhorse.glazedweb.com/pitch/darkhorse/og.jpg">
+<meta name="theme-color" content="#FDF6EC">
+<!-- Glazed's own icons, declared explicitly so nothing falls back to the origin root (glaze/link-cards.md). SVG first, .ico after it for Safari. -->
+<link rel="icon" type="image/svg+xml" href="https://darkhorse.glazedweb.com/pitch/darkhorse/favicon.svg">
+<link rel="icon" href="https://darkhorse.glazedweb.com/pitch/darkhorse/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="https://darkhorse.glazedweb.com/pitch/darkhorse/apple-touch-icon.png">
+<style>
+/* Stylesheet lifted verbatim from griffin-claw-rebuild/pitch/griffin-claw/index.html (glaze/proposal.md),
+   then stripped of the calculator and the two-version grid this proposal does not use. */
+:root{
+ --paper:#FDF6EC; --paper2:#FFF7EA; --card:#FFFDF8;
+ --ink:#2B1E16; --ink2:#201712; --body:#6B5747; --mute:#7F6D5B; --line:#E8DCC8;
+ --pink:#E84D8A; --pink-d:#CE3672;--pink-i:#C9356F; --pink-t:#FCE7F0;
+ --green:#BFE07A; --green-b:#A9D65C; --green-d:#467C3D; --green-t:#F1F8DC;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4,.k,.btn,nav,th,.num,.chip{font-family:var(--sans)}
+.k{font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--green-d)}
+h2{font-size:clamp(30px,4.4vw,48px);font-weight:800;color:var(--ink);letter-spacing:-1.6px;line-height:1.08;margin:10px 0 14px}
+h3{font-size:19px;font-weight:800;color:var(--ink);margin:34px 0 10px;letter-spacing:-.4px}
+p{margin:0 0 14px}
+strong{color:var(--ink);font-weight:600}
+a{color:var(--pink-i)}
+.rule{height:3px;width:52px;background:var(--pink);border-radius:2px;margin:0 0 18px}
+section{padding:60px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(253,246,236,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .gl{height:34px;width:auto;display:block}
+.brand .bw{font-family:var(--sans);font-weight:800;font-size:19px;color:var(--ink);letter-spacing:-.6px;line-height:1.1}
+.brand .bw span{font-weight:350;color:var(--mute)}
+.brand span{font-size:.72rem;color:var(--mute);font-style:italic}
+nav{display:flex;gap:20px;font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+nav a{color:var(--mute);text-decoration:none}
+nav a:hover{color:var(--pink-i)}
+.hright{display:flex;align-items:center;gap:20px}
+.hdemo{display:inline-block;background:var(--pink-d);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.09em;
+ text-transform:uppercase;padding:10px 18px;border-radius:999px;text-decoration:none;white-space:nowrap;
+ box-shadow:0 6px 16px -6px rgba(232,77,138,.55);transition:all .18s}
+.hdemo:hover{background:var(--green);color:var(--ink);transform:translateY(-1px)}
+@media(max-width:720px){nav{display:none}.brand .bw~span{display:none}}
+@media(max-width:400px){.hdemo{font-size:.66rem;padding:9px 13px;letter-spacing:.06em}}
+
+/* hero */
+.hero{padding:66px 0 54px;text-align:left}
+.hero h1{font-family:var(--sans);font-size:clamp(38px,5.5vw,60px);font-weight:800;color:var(--ink);letter-spacing:-2px;line-height:1.04}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero .sub{font-size:1.12rem;color:var(--body);margin-top:20px;max-width:31em}
+.forwho{margin-top:26px;font-family:var(--sans);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);line-height:1.9}
+.forwho b{color:var(--ink)}
+
+/* tldr */
+.tldr{background:var(--ink);color:#F6EFE4;border-radius:16px;padding:26px 26px 22px;margin-top:38px}
+.tldr .k{color:var(--green)}
+.tldr ul{list-style:none;margin:14px 0 0}
+.tldr li{display:flex;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.97rem;line-height:1.5}
+.tldr li:first-child{border-top:0}
+.tldr .n{font-family:var(--sans);font-weight:800;color:var(--green);flex:0 0 auto;font-size:.8rem;padding-top:3px}
+.tldr b{color:#fff}
+
+/* claim cards */
+.claim{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin:12px 0;transition:border-color .16s,transform .16s}
+.claim:hover{border-color:var(--pink);transform:translateY(-1px)}
+.claim h4{font-family:var(--sans);font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:5px;letter-spacing:-.01em}
+.claim p{font-size:.95rem;margin:0}
+.claim p+p{margin-top:10px}
+.claim .verify{display:inline-flex;align-items:center;gap:7px;margin-top:12px;margin-right:8px;font-family:var(--sans);font-size:.71rem;font-weight:700;
+ letter-spacing:.1em;text-transform:uppercase;color:var(--pink-i);text-decoration:none;border:1.5px solid var(--pink);
+ padding:7px 13px;border-radius:999px;transition:all .16s}
+.claim .verify:hover{background:var(--pink-d);color:#fff}
+.claim .verify.plain{border-color:var(--line);color:var(--mute);cursor:default}
+.claim .verify.plain:hover{background:transparent;color:var(--mute)}
+/* overflow-wrap on the mono spans and every table cell: a bare URL is one unbreakable
+   token and pushed the document to 502px at 390 and 320 wide until this was added. */
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:.83em;color:var(--mute);overflow-wrap:anywhere}
+.cmp td,.claim p,.tldr li{overflow-wrap:anywhere}
+
+/* compare table */
+.cmp{width:100%;border-collapse:collapse;margin:16px 0;font-size:.93rem}
+.cmp th{font-family:var(--sans);text-align:left;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+ padding:0 10px 9px 0;border-bottom:2px solid var(--ink);color:var(--ink);vertical-align:bottom}
+.cmp td{padding:12px 10px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+.cmp td:first-child{font-weight:700;color:var(--ink);width:24%;font-family:var(--sans);font-size:.86rem}
+.cmp td:nth-child(2){width:36%;color:var(--mute)}
+.cmp td:nth-child(3){width:40%}
+.tick{color:var(--green-d);font-weight:800}
+
+/* price */
+.pricebox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.pricebox>div{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px}
+.pricebox .n{font-family:var(--sans);font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.pricebox .l{font-size:.85rem;color:var(--mute);margin-top:7px;line-height:1.4}
+@media(max-width:600px){.pricebox{grid-template-columns:1fr}}
+
+/* demo cta */
+.demo{background:linear-gradient(135deg,#201712,#3A2416);color:#F6EFE4;border-radius:18px;padding:32px;margin:22px 0;text-align:center}
+.demo .k{color:var(--green)}
+.demo h3{color:#fff;margin:10px 0 8px;font-size:1.4rem}
+.demo p{color:#D8CBBA;font-size:.98rem;max-width:34em;margin:0 auto 20px}
+.demo a{display:inline-block;background:var(--pink-d);color:#fff;font-family:var(--sans);font-weight:700;font-size:.82rem;box-shadow:0 6px 16px -6px rgba(232,77,138,.55);
+ letter-spacing:.09em;text-transform:uppercase;padding:15px 30px;border-radius:999px;text-decoration:none;transition:all .18s}
+.demo a:hover{background:var(--green);color:var(--ink);transform:translateY(-2px)}
+.btn{display:inline-block;background:var(--pink-d);color:#fff;font-family:var(--sans);font-weight:700;font-size:.82rem;box-shadow:0 6px 16px -6px rgba(232,77,138,.55);letter-spacing:.09em;text-transform:uppercase;padding:15px 30px;border-radius:999px;text-decoration:none;transition:all .18s}
+.btn:hover{background:var(--green);color:var(--ink);transform:translateY(-2px)}
+.vurl{font-family:var(--sans);font-size:.72rem;color:var(--mute);letter-spacing:.02em;word-break:break-all;display:block;margin-top:10px}
+
+/* steps */
+.step{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .no{font-family:var(--sans);font-weight:800;font-size:.78rem;color:#fff;background:var(--pink-d);width:28px;height:28px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.step h4{font-family:var(--sans);font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:4px}
+.step p{font-size:.95rem;margin:0}
+
+footer{background:var(--ink);color:#B9A894;padding:44px 0;font-size:.86rem;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .gl-foot{height:62px;width:auto;opacity:.95}
+footer b{color:#F6EFE4;display:block;font-family:var(--sans);font-size:.95rem;margin-bottom:4px}
+footer .bw{display:block;font-weight:800;color:#F6EFE4;letter-spacing:-.6px;margin-bottom:5px}
+footer .bw span{font-weight:350;color:#A6907F}
+footer a{color:var(--green)}
+.conf{font-size:.72rem;color:#A6907F;margin-top:14px;letter-spacing:.04em}
+.note{font-size:.85rem;color:var(--mute);font-style:italic;line-height:1.5}
+
+/* --- the mark, and its drip, lifted from glazedweb.com --- */
+.gmark{display:block;overflow:visible}
+.gmark .goo{transform-box:fill-box;transform-origin:50% 0;animation:breathe 6s ease-in-out infinite}
+.gmark .wob1,.gmark .wob2,.gmark .wob3,.gmark .wobB{transform-box:fill-box;transform-origin:50% 0}
+.gmark .wob1{animation:sagg 3.8s ease-in-out -.6s infinite}
+.gmark .wob2{animation:sagg 4.9s ease-in-out -2.1s infinite}
+.gmark .wob3{animation:sagg 4.3s ease-in-out -1.3s infinite}
+.gmark .wobB{animation:sagg 5.6s ease-in-out -3s infinite}
+.gmark .string{transform-box:fill-box;transform-origin:50% 0;animation:stringy 3.4s cubic-bezier(.55,.1,.8,.5) infinite}
+.gmark .droplet{transform-box:fill-box;transform-origin:center;animation:fall 3.4s cubic-bezier(.5,.08,.85,.6) infinite}
+.gmark .droplet2{transform-box:fill-box;transform-origin:center;animation:fall2 5.1s cubic-bezier(.5,.08,.85,.6) -2.4s infinite}
+@keyframes breathe{0%,to{transform:scaleY(1)}50%{transform:scaleY(1.02)}}
+@keyframes sagg{0%,to{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(1.07) scaleX(.98)}}
+@keyframes stringy{0%{transform:scaleY(.1);opacity:0}25%{transform:scaleY(.8);opacity:1}60%{transform:scaleY(1.7);opacity:.85}80%{transform:scaleY(2.4);opacity:0}to{transform:scaleY(.1);opacity:0}}
+@keyframes fall{0%{transform:translateY(-16px) scaleY(1.5) scaleX(.7);opacity:0}22%{transform:translateY(-8px) scaleY(1.2) scaleX(.85);opacity:1}60%{transform:translateY(10px) scale(1);opacity:1}to{transform:translateY(38px) scaleY(1.15) scaleX(.9);opacity:0}}
+@keyframes fall2{0%{transform:translateY(-10px) scaleY(1.4) scaleX(.75);opacity:0}25%{transform:translateY(-4px) scale(1);opacity:1}65%{transform:translateY(8px) scale(1);opacity:1}to{transform:translateY(26px) scale(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+ .gmark .goo,.gmark .wob1,.gmark .wob2,.gmark .wob3,.gmark .wobB,
+ .gmark .string,.gmark .droplet,.gmark .droplet2{animation:none}
+}
+.brand .gmark{height:38px;width:auto;margin-bottom:-6px}
+.hero .gmark{height:112px;width:auto;margin-bottom:26px}
+footer .gmark{height:78px;width:auto}
+</style></head><body>
+
+<header><div class="wrap">
+  <a class="brand" href="#top">
+    <svg class="gmark gl" viewBox="0 0 200 250" overflow="visible" aria-hidden="true"><defs><linearGradient id="dgGrad" x1="0" y1="92" x2="0" y2="165" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5FA850"></stop><stop offset="100%" stop-color="#43813A"></stop></linearGradient><linearGradient id="lgGrad" x1="0" y1="92" x2="0" y2="215" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D9EDA0"></stop><stop offset="55%" stop-color="#BFE07A"></stop><stop offset="100%" stop-color="#A3CE55"></stop></linearGradient><radialGradient id="pinkGrad" cx="40%" cy="34%" r="75%"><stop offset="0%" stop-color="#F887B2"></stop><stop offset="55%" stop-color="#E84D8A"></stop><stop offset="100%" stop-color="#CE3672"></stop></radialGradient><linearGradient id="creepGrad" x1="0" y1="90" x2="0" y2="124" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#E3F2B0"></stop><stop offset="100%" stop-color="#C3E181"></stop></linearGradient></defs><g class="goo"><g fill="url(#dgGrad)"><ellipse cx="100" cy="110" rx="38" ry="15"></ellipse><path class="wobB" d="M 86 100 C 86 116, 87 130, 88 142 C 88 148, 91 149, 92 142 C 93 130, 92 114, 92 100 Z"></path><path d="M 114 100 C 114 112, 115 124, 116 134 C 116 140, 119 141, 120 134 C 121 124, 120 110, 120 100 Z"></path></g><g fill="url(#lgGrad)"><path class="wob1" d="M 64 100 C 63 120, 65 138, 66 152 C 66 164, 68 172, 74 173 C 80 172, 83 165, 82 154 C 84 136, 85 116, 86 100 Z"></path><path class="wob2" d="M 92 100 C 91 128, 93 152, 94 172 C 94 188, 97 199, 104 200 C 111 199, 114 190, 112 174 C 113 150, 114 124, 114 100 Z"></path><path class="wob3" d="M 120 100 C 119 116, 120 130, 121 142 C 121 152, 123 159, 129 160 C 134 159, 137 153, 135 144 C 136 130, 137 114, 137 100 Z"></path></g></g><path class="string" d="M 104 199 L 104 209" stroke="#BFE07A" stroke-width="2.5" stroke-linecap="round" fill="none"></path><g class="droplet"><circle cx="104" cy="213" r="7" fill="#BFE07A"></circle><circle cx="102" cy="211" r="2" fill="#F1F8DC" opacity="0.9"></circle></g><circle class="droplet2" cx="74" cy="186" r="4.5" fill="#BFE07A"></circle><circle cx="100" cy="70" r="52" fill="url(#pinkGrad)"></circle><path d="M 56 98 A 52 52 0 0 0 144 98 C 142 94, 138 92, 134 94 C 130 97, 129 102, 125 104 C 119 106, 116 98, 110 96 C 104 94, 103 102, 98 105 C 93 107, 90 100, 84 97 C 78 95, 76 100, 71 102 C 66 103, 62 100, 56 98 Z" fill="url(#creepGrad)"></path><path d="M 68 106 A 42 42 0 0 0 84 116" fill="none" stroke="#F1F8DC" stroke-width="4" stroke-linecap="round" opacity="0.85"></path><path d="M 97 144 Q 103 151 109 144" fill="none" stroke="#55974A" stroke-width="4" stroke-linecap="round"></path><g stroke="#F1F8DC" fill="none" stroke-linecap="round"><path d="M 97 128 C 96 148, 97 166, 100 182" stroke-width="4.5" opacity="0.85"></path><path d="M 69 118 C 68 132, 70 146, 71 156" stroke-width="3.5" opacity="0.8"></path><path d="M 124 114 C 123 124, 125 138, 126 148" stroke-width="3.5" opacity="0.8"></path></g><circle cx="100" cy="192" r="2.5" fill="#F1F8DC" opacity="0.9"></circle><circle cx="100" cy="72" r="13" fill="#FDF6EC"></circle><circle cx="100" cy="72" r="13" fill="none" stroke="#C22F6B" stroke-width="3" opacity="0.3"></circle><path class="sheen" d="M 62 46 A 44 44 0 0 1 82 28" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"></path><circle class="sheen" cx="92" cy="26" r="3.5" fill="#FFFFFF"></circle></svg>
+    <span style="display:flex;flex-direction:column;line-height:1.15"><span class="bw">glazed<span>web</span></span><span>for Dark Horse</span></span>
+  </a>
+  <div class="hright">
+    <nav>
+      <a href="#found">Findings</a>
+      <a href="#own">Ownership</a>
+      <a href="#build">The build</a>
+      <a href="#demo">Demo</a>
+      <a href="#cost">Cost</a>
+    </nav>
+    <a class="hdemo" href="#demo">See what we built ↓</a>
+  </div>
+</div></header>
+
+<div class="wrap" id="top">
+<div class="hero">
+  <svg class="gmark mark" viewBox="0 0 200 250" overflow="visible" aria-hidden="true"><defs><linearGradient id="dgGrad" x1="0" y1="92" x2="0" y2="165" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5FA850"></stop><stop offset="100%" stop-color="#43813A"></stop></linearGradient><linearGradient id="lgGrad" x1="0" y1="92" x2="0" y2="215" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D9EDA0"></stop><stop offset="55%" stop-color="#BFE07A"></stop><stop offset="100%" stop-color="#A3CE55"></stop></linearGradient><radialGradient id="pinkGrad" cx="40%" cy="34%" r="75%"><stop offset="0%" stop-color="#F887B2"></stop><stop offset="55%" stop-color="#E84D8A"></stop><stop offset="100%" stop-color="#CE3672"></stop></radialGradient><linearGradient id="creepGrad" x1="0" y1="90" x2="0" y2="124" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#E3F2B0"></stop><stop offset="100%" stop-color="#C3E181"></stop></linearGradient></defs><g class="goo"><g fill="url(#dgGrad)"><ellipse cx="100" cy="110" rx="38" ry="15"></ellipse><path class="wobB" d="M 86 100 C 86 116, 87 130, 88 142 C 88 148, 91 149, 92 142 C 93 130, 92 114, 92 100 Z"></path><path d="M 114 100 C 114 112, 115 124, 116 134 C 116 140, 119 141, 120 134 C 121 124, 120 110, 120 100 Z"></path></g><g fill="url(#lgGrad)"><path class="wob1" d="M 64 100 C 63 120, 65 138, 66 152 C 66 164, 68 172, 74 173 C 80 172, 83 165, 82 154 C 84 136, 85 116, 86 100 Z"></path><path class="wob2" d="M 92 100 C 91 128, 93 152, 94 172 C 94 188, 97 199, 104 200 C 111 199, 114 190, 112 174 C 113 150, 114 124, 114 100 Z"></path><path class="wob3" d="M 120 100 C 119 116, 120 130, 121 142 C 121 152, 123 159, 129 160 C 134 159, 137 153, 135 144 C 136 130, 137 114, 137 100 Z"></path></g></g><path class="string" d="M 104 199 L 104 209" stroke="#BFE07A" stroke-width="2.5" stroke-linecap="round" fill="none"></path><g class="droplet"><circle cx="104" cy="213" r="7" fill="#BFE07A"></circle><circle cx="102" cy="211" r="2" fill="#F1F8DC" opacity="0.9"></circle></g><circle class="droplet2" cx="74" cy="186" r="4.5" fill="#BFE07A"></circle><circle cx="100" cy="70" r="52" fill="url(#pinkGrad)"></circle><path d="M 56 98 A 52 52 0 0 0 144 98 C 142 94, 138 92, 134 94 C 130 97, 129 102, 125 104 C 119 106, 116 98, 110 96 C 104 94, 103 102, 98 105 C 93 107, 90 100, 84 97 C 78 95, 76 100, 71 102 C 66 103, 62 100, 56 98 Z" fill="url(#creepGrad)"></path><path d="M 68 106 A 42 42 0 0 0 84 116" fill="none" stroke="#F1F8DC" stroke-width="4" stroke-linecap="round" opacity="0.85"></path><path d="M 97 144 Q 103 151 109 144" fill="none" stroke="#55974A" stroke-width="4" stroke-linecap="round"></path><g stroke="#F1F8DC" fill="none" stroke-linecap="round"><path d="M 97 128 C 96 148, 97 166, 100 182" stroke-width="4.5" opacity="0.85"></path><path d="M 69 118 C 68 132, 70 146, 71 156" stroke-width="3.5" opacity="0.8"></path><path d="M 124 114 C 123 124, 125 138, 126 148" stroke-width="3.5" opacity="0.8"></path></g><circle cx="100" cy="192" r="2.5" fill="#F1F8DC" opacity="0.9"></circle><circle cx="100" cy="72" r="13" fill="#FDF6EC"></circle><circle cx="100" cy="72" r="13" fill="none" stroke="#C22F6B" stroke-width="3" opacity="0.3"></circle><path class="sheen" d="M 62 46 A 44 44 0 0 1 82 28" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"></path><circle class="sheen" cx="92" cy="26" r="3.5" fill="#FFFFFF"></circle></svg>
+  <div class="k">Website proposal · Dark Horse Brewing Company</div>
+  <h1>Do you own<br>your website?<br><em>Four companies<br>and an inbox do.</em></h1>
+  <p class="sub">We measured darkhorsebrewery.com page by page on September 3, 2026: what it weighs, what it tells search engines, what happens when somebody taps Order Carryout, and whose servers it runs on. This is what we found, and what we would build in its place: a site whose code is in your name from day one, on the domain you already own.</p>
+  <div class="forwho">
+    Prepared by <b>Kevin Hershock · Glazed Web</b><br>
+    Marshall, Michigan · September 2026<br>
+    <b>Every claim below links to the proof.</b>
+  </div>
+
+  <div class="tldr">
+    <div class="k">The short version</div>
+    <ul>
+      <li><span class="n">01</span><span>A menu page nobody at Dark Horse wrote is live on your site: <b>tuna sashimi, schnitzel and $1.50 cocktails</b>. It is Wix template filler, and it is listed in your own sitemap.</span></li>
+      <li><span class="n">02</span><span>Your one big button, <b>ORDER CARRYOUT</b>, opened to <b>&ldquo;Currently not accepting online orders&rdquo;</b> at 7:15 on a Thursday evening, with the kitchen open until 9.</span></li>
+      <li><span class="n">03</span><span>Two of the three shows on your homepage are listed for <b>a Monday</b>. Your live music is Thursdays and Saturdays.</span></li>
+      <li><span class="n">04</span><span>Your homepage is a <b>16.6 MB</b> download on a phone. <b>243 of its 250 requests</b> go to other companies&rsquo; servers. Instagram alone is 11.4 MB.</span></li>
+      <li><span class="n">05</span><span><b>4,800 Mug Club members</b>, and the whole program runs on one employee&rsquo;s email address.</span></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<section id="found"><div class="wrap">
+  <div class="k">Section one</div><div class="rule"></div>
+  <h2>What we found.</h2>
+  <p>First, what this is not. It is not a critique of your beer, your kitchen, your brand, or the people keeping the site current. Dark Horse has been pouring since 1997, is one of the last independents left in Michigan craft beer, runs a Mug Club people camp out for, and the story on your About page is the best writing on the site. <strong>The brand is not the problem, and neither is the copy.</strong> What follows is about the machine underneath it: how the site is built, what it weighs, what it tells search engines, and whose servers it runs on.</p>
+  <p>Nine findings, taken from your live site on <strong>September 3, 2026</strong>. Every one came off darkhorsebrewery.com itself and every one can be checked against it, most of them by tapping the link under it. Nothing below is an opinion, and nothing below needs our word for it.</p>
+
+  <div class="claim">
+    <h4>A dinner menu you never wrote is live on your site</h4>
+    <p><span class="mono">darkhorsebrewery.com/menu</span> is titled &ldquo;Dinner Menu | Dark Horse Brewing Co.&rdquo; and lists <strong>Tuna sashimi at $4.50, Peanut crusted steak at $8.00, Schnitzel at $4.00</strong>, a &ldquo;Healthy smoothie,&rdquo; and Aperol Spritz, Gin &amp; Tonic and Mojito at <strong>$1.50</strong>, over blurred stock photos of plates. It is the sample content Wix ships inside its restaurant-menu app, never replaced. It is not linked from your navigation, so nobody on staff sees it. But it is listed in <span class="mono">restaurants-menu-sitemap.xml</span>, which is the file you hand Google, and four more copies answer at <span class="mono">/menu?menu=lunch-menu</span>, <span class="mono">breakfast-menu</span>, <span class="mono">drinks-menu</span> and <span class="mono">brunch-menu</span>, titled &ldquo;Menus (New).&rdquo; Your real menu, the cheese bread and the brisket nachos and the wood-fired pizzas, is good. It lives as one section partway down a single long page called Brewery, mixed in with hours, events and the Mug Club, and it has no address of its own.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/menu" target="_blank" rel="noopener">Open the menu page ↗</a>
+    <a class="verify" href="https://www.darkhorsebrewery.com/restaurants-menu-sitemap.xml" target="_blank" rel="noopener">Open your sitemap ↗</a>
+  </div>
+  <div class="claim">
+    <h4>Order Carryout opened to a closed door</h4>
+    <p>The most prominent button on every page of your site links to a Toast page whose address reads <span class="mono">order.toasttab.com/online/roak-brewing-co-dark-horse-brewing-511-s-kalamazoo-ave</span>. At <strong>7:15 PM on Thursday, September 3</strong>, with the taproom open until 10 and the kitchen until 9 by the hours you post, that page said <strong>&ldquo;Currently not accepting online orders.&rdquo;</strong> No reason, no phone number in view, no other way to order. Whether Toast was switched off on purpose that evening or not, the visitor cannot tell, and your site offers nothing else to do. The same page shows your full pizza menu, your calzones and a Toast points program, none of which appear anywhere on darkhorsebrewery.com. And the address bar names ROAK, your Royal Oak brand, ahead of Dark Horse, on a link for the Marshall kitchen.</p>
+    <a class="verify" href="https://order.toasttab.com/online/roak-brewing-co-dark-horse-brewing-511-s-kalamazoo-ave" target="_blank" rel="noopener">Open the ordering page ↗</a>
+  </div>
+  <div class="claim">
+    <h4>Live music is listed on the wrong day</h4>
+    <p>On your homepage and your Events page, <strong>&ldquo;Live Music Saturday: Boy Mob&rdquo;</strong> is dated <strong>Mon, Sep 07</strong>. So is <strong>&ldquo;Live Music Thursday: The Fat Animals.&rdquo;</strong> Open the Boy Mob listing and it shows September 7, 6 to 9 PM, while the description underneath reads &ldquo;Join us on Saturday, September 19th.&rdquo; Three dates for one show. Your Instagram, which the homepage pulls in, says the series runs every Thursday and Saturday. September 7 is a Monday. Every listing also carries a <strong>&ldquo;Buy Tickets&rdquo;</strong> button that opens a checkout for a $0.00 ticket, so a customer asking whether they need one is put through a purchase to learn they do not.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/events" target="_blank" rel="noopener">Open your events page ↗</a>
+    <a class="verify" href="https://www.darkhorsebrewery.com/event-details/live-music-saturday-boy-mob-1" target="_blank" rel="noopener">Open the Boy Mob listing ↗</a>
+  </div>
+  <div class="claim">
+    <h4>The page people open on a phone is a 16.6 MB download</h4>
+    <p>We ran Google&rsquo;s own Lighthouse tool against your homepage on a phone profile. <strong>Total weight: 16,980 KB across 250 requests.</strong> The page becomes usable, by Google&rsquo;s measure, after <strong>42.7 seconds</strong>; the bar is under 4. <strong>243 of the 250 requests go to servers that are not yours.</strong> The single biggest cause is the Instagram feed embedded at the bottom of the page: it loads <strong>eight Instagram video players and around sixty photographs</strong> before a visitor has scrolled to it, 11.4 MB on its own, and the largest single image on your homepage is a 1.4 MB Instagram photo shown at thumbnail size. The site sends nearly the same weight to a phone as to a desktop. Someone checking your hours from the parking lot on one bar of signal is downloading a feature film&rsquo;s worth of Instagram to do it.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/" target="_blank" rel="noopener">Open your homepage ↗</a>
+    <span class="verify plain">Lighthouse 12.8, mobile profile, September 3, 2026</span>
+  </div>
+  <div class="claim">
+    <h4>A 655 KB age check that never asks anyone&rsquo;s age</h4>
+    <p>Your homepage loads a script from <span class="mono">age.bestfreecdn.com</span>, a free age-verification widget. It weighs <strong>655 KB</strong>, more than most entire websites, 567 KB of it never executed, and it blocks the page for a tenth of a second on every load. Across more than a dozen visits at two screen sizes, <strong>no age gate ever appeared.</strong> No prompt, no cookie, nothing in the page. You sell a 10 percent ABV malt beverage line and your site&rsquo;s age check is a dead weight from a free-widget server, doing nothing but slowing the page down.</p>
+    <span class="verify plain">View source on any page → search for bestfreecdn</span>
+  </div>
+  <div class="claim">
+    <h4>Google is told almost nothing about you</h4>
+    <p>A page&rsquo;s main heading is the first thing a search engine reads. Your homepage has two, and they are <strong>&ldquo;Upcoming Events&rdquo; and &ldquo;JOIN OUR MAILING LIST.&rdquo;</strong> Nothing on the page tells Google, in the form it reads, that this is a brewery in Marshall. Your About page, the one with the story, has no main heading at all. Your address, hours and phone number are on the site for humans but exist in <strong>no machine-readable form</strong>: there is no business, restaurant or brewery record in any page we checked for Google to build a listing or an hours panel from, only the generic &ldquo;WebSite&rdquo; stub Wix emits by default. The description Google is offered for your homepage is 402 characters; it shows about 155. And the icon in the browser tab, on every page, is <strong>Wix&rsquo;s default icon</strong>, not your horse.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/about" target="_blank" rel="noopener">Open your About page ↗</a>
+    <span class="verify plain">Look at the icon in your browser tab</span>
+  </div>
+  <div class="claim">
+    <h4>On a phone, your homepage headline is gone</h4>
+    <p>On a desktop the intro over the hero video is headed <strong>&ldquo;A NEW BREED.&rdquo;</strong> Open the same page on a phone and the heading is not there. Not small, not hidden behind something: <strong>absent from the page</strong>. Wix keeps a separate, hand-arranged layout for phones, and this one was never finished, so most of your visitors go from video to paragraph with nothing to tell them what they are reading.</p>
+    <span class="verify plain">Open darkhorsebrewery.com on your phone and look for the words A New Breed</span>
+  </div>
+  <div class="claim">
+    <h4>Your hours live in three places, and the Contact page has none of them</h4>
+    <p>The homepage shows Taproom hours, opening at 11. Partway down the Brewery page, the Commons Market has its own hours and a line that matters more than anything on the homepage: <strong>breakfast Thursday to Sunday from 7 AM</strong>. Below that, the General Store has a third set. The one question people ask a brewery&rsquo;s website most, &ldquo;are you open right now,&rdquo; has three answers on two pages and no logic behind any of them. Your Contact page, meanwhile, is a headline, an out-of-focus banner photograph and a form: <strong>no address, no phone number, no map, no hours</strong>. Both appear only in the small footer, below a blank gap half a screen tall, and the phone number there is plain text, so tapping it on a phone does nothing.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/contact" target="_blank" rel="noopener">Open your contact page ↗</a>
+    <a class="verify" href="https://www.darkhorsebrewery.com/brewery" target="_blank" rel="noopener">Find the breakfast hours ↗</a>
+  </div>
+  <div class="claim">
+    <h4>The small things a regular notices</h4>
+    <p>Devil Dog, the flagship of your ROAK brand, is described as <strong>&ldquo;An satmeal stout.&rdquo;</strong> The About page says more than 5,000 Mug Club members; the Mug Club page says more than 4,800. The photographs on your About, Brewery and Work With Us pages carry <strong>camera filenames as their descriptions</strong>, <span class="mono">IMG_0081.JPG</span>, <span class="mono">IMG_7844_edited.jpg</span>, <span class="mono">Untitled design (1).jpg</span>, which is exactly what a screen reader announces. The Family of Brands page lives at <span class="mono">/family-of-brands-1</span>, the address Wix assigns when a page is created twice. The homepage calls you Dark Horse Brewing Company; every other page says Brewing Co. And the blog from your previous website still appears in Google, and now lands on a Page Not Found.</p>
+    <a class="verify" href="https://www.darkhorsebrewery.com/roak" target="_blank" rel="noopener">Open the ROAK page ↗</a>
+    <a class="verify" href="https://www.darkhorsebrewery.com/blog/" target="_blank" rel="noopener">Open the old blog link ↗</a>
+  </div>
+
+  <p class="note" style="margin-top:20px">Some of these are a five-minute edit that nobody has made, which says something about how hard the platform makes it to see what is live. The rest, the weight, the headings, the missing business record, the tab icon, the vanished mobile headline, are what the platform does on every page, every time, regardless of who is typing.</p>
+</div></section>
+
+<section id="own"><div class="wrap">
+  <div class="k">Section two</div><div class="rule"></div>
+  <h2>The part that matters most.</h2>
+  <p style="font-size:1.1rem;color:var(--ink)">Most businesses assume that paying for a website means owning it. On Wix, the paperwork is unusually clear that you do not.</p>
+
+  <h3>What Wix says, in its own words</h3>
+  <p>Wix&rsquo;s help center, under &ldquo;Exporting or Embedding Your Wix Site Elsewhere,&rdquo; says it in one sentence: <strong>&ldquo;Your site must run on Wix&rsquo;s servers.&rdquo;</strong> There is no export. There is no file you can take to another host. Stop paying, and the site stops existing; what you keep is whatever text somebody copies out by hand. Twenty-nine years of brand, and the website for it disappears the month a card payment fails.</p>
+  <p><a href="https://support.wix.com/en/article/exporting-or-embedding-your-wix-site-elsewhere" target="_blank" rel="noopener">Read the article ↗</a></p>
+
+  <h3>And Wix is only one of five</h3>
+  <table class="cmp">
+    <tr><th>A visitor wants to</th><th>Where they end up</th><th>Whose name is on it</th></tr>
+    <tr><td>Read about you</td><td>darkhorsebrewery.com</td><td>Wix</td></tr>
+    <tr><td>Order a pizza</td><td>order.toasttab.com, under a ROAK address</td><td>Toast</td></tr>
+    <tr><td>See what&rsquo;s on tap</td><td>business.untappd.com, a page built for a TV screen</td><td>Untappd</td></tr>
+    <tr><td>Buy a shirt</td><td>stores.inksoft.com</td><td>InkSoft</td></tr>
+    <tr><td>Get a ticket</td><td>A Wix Events checkout</td><td>Wix</td></tr>
+    <tr><td>Renew a mug</td><td>&ldquo;Email emily@darkhorsebrewery.com&rdquo;</td><td>One employee&rsquo;s inbox</td></tr>
+  </table>
+  <p>Someone who wants your hours, your menu, your tap list, a pizza, a shirt and a mug renewal touches four companies and one person. <strong>None of the four is Dark Horse.</strong> And the Mug Club is the one that should keep you up at night: 4,800 people who line up in December, and the whole digital record of them is whatever is in one mailbox.</p>
+
+  <h3>The one thing you do own</h3>
+  <p>Your domain. <span class="mono">darkhorsebrewery.com</span> has been registered in your name through Network Solutions since <strong>February 2005</strong>, and it is paid up to 2029. That is the address everybody knows, the one on every can and every sign, and it is yours outright. Everything behind it is rented. Our whole proposal is to put something behind that address that belongs to you too.</p>
+
+  <div class="demo" style="text-align:left;background:var(--card);color:var(--body);border:2px solid var(--green)">
+    <div class="k" style="color:var(--green-d)">What we would do instead</div>
+    <h3 style="color:var(--ink);margin-top:8px">You own it. All of it.</h3>
+    <p style="color:var(--body);margin:0">When the build fee is paid, the site becomes yours in writing: design, source code, configuration, the Mug Club list. If you ever leave us you get the working project: repository, hosting, logins. <strong>Not a snapshot. Not an export.</strong> Month to month, thirty days&rsquo; notice, no exit fee. Your domain stays where it is, in your name. That clause is titled <em>No hostage-taking</em>, because we would rather say it plainly than bury it.</p>
+  </div>
+
+  <h3>Three questions worth asking this week</h3>
+  <table class="cmp">
+    <tr><td>Who has the Wix login?</td><td colspan="2">And the Toast admin, the Untappd for Business account, the InkSoft store, the Network Solutions account. If the answer to any of them is one person&rsquo;s personal email, that is a risk today, before any decision about a website.</td></tr>
+    <tr><td>If Emily is out for a month, who can renew a mug?</td><td colspan="2">Not who could figure it out. Who can do it today, from the list as it exists, without her.</td></tr>
+    <tr><td>Where are the original photos and logo files?</td><td colspan="2">Every image on the site lives on Wix&rsquo;s servers as a resized copy. Ask for the originals now, while it is easy.</td></tr>
+  </table>
+</div></section>
+
+<section id="build"><div class="wrap">
+  <div class="k">Section three</div><div class="rule"></div>
+  <h2>What we would build.</h2>
+  <p>Not a description. A working demo, built before this proposal went out, and the whole of the next section. Every row below is in it, except the two that say so in their row.</p>
+
+  <table class="cmp">
+    <tr><th></th><th>Your site today</th><th>The rebuild</th></tr>
+    <tr><td>The menu</td><td>The real one buried partway down the Brewery page; a Wix sample menu with $1.50 cocktails answering at <span class="mono">/menu</span></td><td><span class="mono">/menu</span> <span class="tick">is the menu</span>: taproom, pizza and Commons breakfast, each with its own link, each readable by Google as a menu, the sample gone</td></tr>
+    <tr><td>Hours</td><td>Three sets on two pages, no open or closed logic, breakfast mentioned once, mid-page</td><td>One block on the homepage, <span class="tick">open now</span> computed from the clock, breakfast days named, holiday hours set once and shown everywhere</td></tr>
+    <tr><td>Events</td><td>Mondays listed for Saturday shows; a checkout to find out a show is free</td><td>The weekday comes from the date, so it cannot be wrong. Free shows say <span class="tick">Free, no ticket needed</span>. Ticketed ones sell tickets</td></tr>
+    <tr><td>Mug Club</td><td>&ldquo;Visit the taproom or email Emily&rdquo;</td><td><span class="tick">Online signup and renewal</span> with a card on file, a member number, the December release as a real waitlist, and a screen that answers &ldquo;how many renewed this year&rdquo; without opening a spreadsheet. This is the row that makes the job what it is</td></tr>
+    <tr><td>Ordering</td><td><span class="mono">order.toasttab.com/online/roak-brewing-co-dark-horse-brewing-…</span></td><td><span class="mono">order.darkhorsebrewery.com</span>. Toast can keep running behind it; <span class="tick">the address is yours</span> whether or not the kitchen ever changes systems. Not in the demo: it needs your Toast account to wire up</td></tr>
+    <tr><td>What&rsquo;s on tap</td><td>A link out to an Untappd page built for a TV on the wall</td><td>The same Untappd feed <span class="tick">rendered into your pages</span>, in your type, on the homepage, readable by Google</td></tr>
+    <tr><td>Merch</td><td>A link out to InkSoft</td><td>Your shirts on your pages, in your brand. Checkout stays with your print shop until you want it in-house</td></tr>
+    <tr><td>The five brands</td><td>Every beer name a page heading, twelve on one page, none on the About page</td><td>One system for all five: each brand a page, each beer a card, the story with a heading over it</td></tr>
+    <tr><td>Age check</td><td>655 KB from a free-widget server that never asks</td><td>One that works, once, remembered, in about ten lines</td></tr>
+    <tr><td>Contact</td><td>A form, a blurred photo, and the address and phone in the footer as plain text</td><td>Map, <span class="tick">tap to call</span>, tap to email, hours above the form, and the three sets of hours in one place</td></tr>
+    <tr><td>Search &amp; AI visibility</td><td>Two headings, &ldquo;Upcoming Events&rdquo; and &ldquo;Join Our Mailing List&rdquo;; no business record; Wix&rsquo;s icon in the tab</td><td>Full brewery, restaurant, menu and event markup, so your hours get quoted correctly by Google and by whatever answers questions next year. Your horse in the tab</td></tr>
+    <tr><td>Keeping it current</td><td>Everything goes through the Wix editor, and the dates on your events say that is not happening</td><td>A <span class="tick">workroom of your own</span>: one passcode-protected page where staff post a show, change a price, or set holiday hours from a phone. Not in the demo; it is already running for other Glazed clients and we will walk you through one on the call</td></tr>
+    <tr><td>Weight</td><td>16.6 MB on a phone, 42.7 seconds to usable</td><td><span class="tick">Under 1 MB</span> on the homepage, photos sized to the screen that asks for them, the Instagram feed as six thumbnails instead of eight video players</td></tr>
+    <tr><td>Old links</td><td>The previous site&rsquo;s blog and beer pages, still in Google, now Page Not Found</td><td>Redirected, so a decade of links to you lands on you</td></tr>
+  </table>
+
+  <p class="note">Two things in the demo are ours to flag and yours to supply. We built it with the can photography and the logo on your site today, pulled at the sizes Wix serves them, and we would want the originals from you before launch. Product photography is the one thing we cannot generate, so we will build around whatever you have, and we can tell you what sizes the layouts want if you would rather shoot fresh.</p>
+</div></section>
+
+<section id="demo"><div class="wrap">
+  <div class="k">Section four</div><div class="rule"></div>
+  <h2>See it before you decide anything.</h2>
+  <p style="font-size:1.1rem;color:var(--ink)">Built before this proposal was written, on our own time, because showing beats describing. Click it and use it. It is not a picture.</p>
+  <!-- PLACEHOLDER: /demo does not exist yet. This proposal must not be sent until the demo is deployed at darkhorse.glazedweb.com/demo and every route loads. See README checklist. -->
+  <div class="demo">
+    <div class="k">The demo</div>
+    <h3>Your site, rebuilt, on your own bones</h3>
+    <p>Same horse, same green, same voice. Every row in the table above, working: the menu with an address of its own, hours that know what time it is, events that know what day it is, and a Mug Club you can join from a barstool.</p>
+    <a href="/demo" target="_blank" rel="noopener">Open the demo ↗</a>
+    <span class="vurl" style="color:#B9A894">darkhorse.glazedweb.com/demo</span>
+  </div>
+</div></section>
+
+<section id="cost"><div class="wrap">
+  <div class="k">Section five</div><div class="rule"></div>
+  <h2>What it costs.</h2>
+
+  <div class="pricebox">
+    <div><div class="n">$4,500</div><div class="l">One-time build. Design, development, the Mug Club system, content migration, launch. Half to start, half on launch.</div></div>
+    <div><div class="n">$195<span style="font-size:1rem;color:var(--mute)">/mo</span></div><div class="l">Hosting, SSL, updates, security, backups, the workroom, and content edits whenever you would rather we made them.</div></div>
+  </div>
+  <p>That is <strong>$6,840</strong> across the first twelve months, then <strong>$2,340 a year</strong>. Extra work is always quoted and approved before it starts, so nothing lands on your bill by surprise.</p>
+
+  <h3>What the monthly replaces</h3>
+  <p>We are not going to guess at your Wix bill. What we can say is what goes away: the Wix plan, the Wix Events fees on anything you do charge for, the free age widget that costs your visitors 655 KB a page, and the InkSoft store if you ever want it gone. Toast, if you keep it, stays what it is, and the Mug Club renewals move from a mailbox to a card on file.</p>
+  <p><strong>Year one costs more than doing nothing.</strong> You are buying a website; that is a real number on top of a bill you already have, and any proposal that hides it is not worth reading. Year two, you own the result.</p>
+
+  <div class="demo" style="background:var(--card);color:var(--body);border:2px solid var(--line);text-align:left">
+    <div class="k" style="color:var(--green-d)">Worth saying plainly</div>
+    <p style="color:var(--body);margin:10px 0 0;max-width:none">We are a small shop in Marshall, the same town as your taproom, not an agency with a floor of account managers. That is why the price looks the way it does, and it is also why you get the person who builds the thing on the phone when something needs changing. If you want a vendor with a procurement portal, we are not that. If you want your website fixed and kept fixed by somebody down the road, <strong>we are exactly that.</strong></p>
+  </div>
+</div></section>
+
+<section id="next"><div class="wrap">
+  <div class="k">Section six</div><div class="rule"></div>
+  <h2>What happens next.</h2>
+  <div class="step"><div class="no">1</div><div><h4>Look at the demo</h4><p>Ten minutes: <a href="/demo" target="_blank" rel="noopener">darkhorse.glazedweb.com/demo</a>. It was built before this proposal, on our own time. If it is not right, that is useful information and it costs you nothing to say so.</p></div></div>
+  <div class="step"><div class="no">2</div><div><h4>A conversation, not a pitch</h4><p>Half an hour, at the taproom or on a call. <a href="https://glazedweb.com/schedule" target="_blank" rel="noopener">Pick the time at glazedweb.com/schedule</a> and it lands in both calendars. Two questions we would want to ask: who needs to approve a website change, and what does your team actually need to update week to week without calling anybody?</p></div></div>
+  <div class="step"><div class="no">3</div><div><h4>Find your Wix renewal date</h4><p>Wix plans are usually prepaid for the year and renew on their own. <strong>Find the date before you decide anything</strong>, including deciding to stay. We will happily build toward it; there is no reason to pay two vendors at once.</p></div></div>
+  <div class="step"><div class="no">4</div><div><h4>Build</h4><p>Roughly four to six weeks from a signed scope to launch. The variable is how fast menus, the Mug Club rules and photography come together on your side. The build itself runs to schedule.</p></div></div>
+
+  <h3>What we would need from you</h3>
+  <p>The taproom, pizza and breakfast menus in any format, the Mug Club rules and price as they actually work today, logo files and whatever photography you have, access to Untappd for Business and Toast, the Network Solutions login, and one person empowered to say yes. That is genuinely the list.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <span class="bw" style="font-size:21px">glazed<span>web</span></span>
+    Kevin Hershock · Marshall, Michigan<br>
+    <a href="https://glazedweb.com" target="_blank" rel="noopener">glazedweb.com</a> · hello@glazedweb.com
+    <div class="conf">Prepared for Dark Horse Brewing Company · September 2026 · Valid 60 days</div>
+  </div>
+  <svg class="gmark gl-foot" viewBox="0 0 200 250" overflow="visible" aria-hidden="true"><defs><linearGradient id="dgGrad" x1="0" y1="92" x2="0" y2="165" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5FA850"></stop><stop offset="100%" stop-color="#43813A"></stop></linearGradient><linearGradient id="lgGrad" x1="0" y1="92" x2="0" y2="215" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D9EDA0"></stop><stop offset="55%" stop-color="#BFE07A"></stop><stop offset="100%" stop-color="#A3CE55"></stop></linearGradient><radialGradient id="pinkGrad" cx="40%" cy="34%" r="75%"><stop offset="0%" stop-color="#F887B2"></stop><stop offset="55%" stop-color="#E84D8A"></stop><stop offset="100%" stop-color="#CE3672"></stop></radialGradient><linearGradient id="creepGrad" x1="0" y1="90" x2="0" y2="124" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#E3F2B0"></stop><stop offset="100%" stop-color="#C3E181"></stop></linearGradient></defs><g class="goo"><g fill="url(#dgGrad)"><ellipse cx="100" cy="110" rx="38" ry="15"></ellipse><path class="wobB" d="M 86 100 C 86 116, 87 130, 88 142 C 88 148, 91 149, 92 142 C 93 130, 92 114, 92 100 Z"></path><path d="M 114 100 C 114 112, 115 124, 116 134 C 116 140, 119 141, 120 134 C 121 124, 120 110, 120 100 Z"></path></g><g fill="url(#lgGrad)"><path class="wob1" d="M 64 100 C 63 120, 65 138, 66 152 C 66 164, 68 172, 74 173 C 80 172, 83 165, 82 154 C 84 136, 85 116, 86 100 Z"></path><path class="wob2" d="M 92 100 C 91 128, 93 152, 94 172 C 94 188, 97 199, 104 200 C 111 199, 114 190, 112 174 C 113 150, 114 124, 114 100 Z"></path><path class="wob3" d="M 120 100 C 119 116, 120 130, 121 142 C 121 152, 123 159, 129 160 C 134 159, 137 153, 135 144 C 136 130, 137 114, 137 100 Z"></path></g></g><path class="string" d="M 104 199 L 104 209" stroke="#BFE07A" stroke-width="2.5" stroke-linecap="round" fill="none"></path><g class="droplet"><circle cx="104" cy="213" r="7" fill="#BFE07A"></circle><circle cx="102" cy="211" r="2" fill="#F1F8DC" opacity="0.9"></circle></g><circle class="droplet2" cx="74" cy="186" r="4.5" fill="#BFE07A"></circle><circle cx="100" cy="70" r="52" fill="url(#pinkGrad)"></circle><path d="M 56 98 A 52 52 0 0 0 144 98 C 142 94, 138 92, 134 94 C 130 97, 129 102, 125 104 C 119 106, 116 98, 110 96 C 104 94, 103 102, 98 105 C 93 107, 90 100, 84 97 C 78 95, 76 100, 71 102 C 66 103, 62 100, 56 98 Z" fill="url(#creepGrad)"></path><path d="M 68 106 A 42 42 0 0 0 84 116" fill="none" stroke="#F1F8DC" stroke-width="4" stroke-linecap="round" opacity="0.85"></path><path d="M 97 144 Q 103 151 109 144" fill="none" stroke="#55974A" stroke-width="4" stroke-linecap="round"></path><g stroke="#F1F8DC" fill="none" stroke-linecap="round"><path d="M 97 128 C 96 148, 97 166, 100 182" stroke-width="4.5" opacity="0.85"></path><path d="M 69 118 C 68 132, 70 146, 71 156" stroke-width="3.5" opacity="0.8"></path><path d="M 124 114 C 123 124, 125 138, 126 148" stroke-width="3.5" opacity="0.8"></path></g><circle cx="100" cy="192" r="2.5" fill="#F1F8DC" opacity="0.9"></circle><circle cx="100" cy="72" r="13" fill="#201712"></circle><circle cx="100" cy="72" r="13" fill="none" stroke="#C22F6B" stroke-width="3" opacity="0.3"></circle><path class="sheen" d="M 62 46 A 44 44 0 0 1 82 28" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"></path><circle class="sheen" cx="92" cy="26" r="3.5" fill="#FFFFFF"></circle></svg>
+</div></footer>
+</body></html>
