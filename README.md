@@ -270,7 +270,7 @@ Built 2026-09-03 (evening), the same day as the proposal, so the three deliverab
 - [x] Vercel project created, `darkhorse.glazedweb.com` attached, `/` serves the proposal, `/pitch/darkhorse/og.jpg` returns 200 image/jpeg (checked 2026-09-03, 34KB).
 - [x] Pitch host sends `X-Robots-Tag: noindex, nofollow` (checked on the live host).
 - [x] Demo card exists and is the client's, separate from the proposal card (`demo/assets/og.jpg`).
-- [ ] After this push: `/demo`, `/demo/menu`, `/demo/mug-club`, `/demo/assets/og.jpg` and one `.ics` return 200 on `darkhorse.glazedweb.com`, and `/` still serves the proposal with `cleanUrls` on.
+- [x] Deployed and fetched on `darkhorse.glazedweb.com` (2026-09-03, deployment READY per the Vercel API, then one fetch): `/demo`, `/demo/menu`, `/demo/mug-club`, `/demo/events`, `/demo/contact`, both `og.jpg` files and `/demo/events/boy-mob.ics` (as `text/calendar`) all 200; `/demo/menu.html` 308s to the clean URL; `X-Robots-Tag: noindex, nofollow` on the custom host and the `.vercel.app` alias. **Trap, already hit once:** with `cleanUrls` on, the root rewrite destination must be `/pitch/darkhorse/index`, not `index.html`; the `.html` form turned the proposal into a 404 for about ninety seconds between `dfff21d` and `30002e7`.
 - [ ] Kevin confirms the Mug Club system belongs inside $4,500, or the two lines named above are changed.
 - [ ] Kevin confirms the two inferred event dates and the mug count, or the demo carries them as they are.
 - [ ] Kevin rules the credit wording ("Double Dipped by" is in the footer now).
