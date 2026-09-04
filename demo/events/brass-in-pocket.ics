@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dark Horse Brewing Co.//Events//EN
+BEGIN:VEVENT
+UID:brass-in-pocket@darkhorsebrewery.com
+DTSTAMP:20260904T014618Z
+DTSTART:20260924T230000Z
+DTEND:20260925T010000Z
+SUMMARY:Live Music: Brass in Pocket
+DESCRIPTION:Live music in the Beer Garten.
+LOCATION:Dark Horse Brewing Co.\, 511 S. Kalamazoo Ave.\, Marshall\, MI 49068
+END:VEVENT
+END:VCALENDAR

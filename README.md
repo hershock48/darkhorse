@@ -232,9 +232,32 @@ One action, per the ruling for US-market proposals: book the call at glazedweb.c
 
 **Hosting:** `vercel.json` rewrites `/` to the pitch file and sends `X-Robots-Tag: noindex, nofollow` on every path. Needs a Vercel project pointed at this repo and `darkhorse.glazedweb.com` attached to it. Not done yet.
 
-### One placeholder, and it blocks sending
+### The demo, at `/demo`
 
-Section four links to `darkhorse.glazedweb.com/demo` and describes it as built. **It is not built.** The HTML carries a `PLACEHOLDER` comment at that spot. Per `proposal.md` the three deliverables go out together, so the send order is: build the demo on the rows in section three (at minimum the menu page, hours with open/closed logic, events with the weekday derived from the date, and a Mug Club signup and renewal flow, since the demo card promises "a Mug Club you can join from a barstool"), deploy it at `/demo`, then send.
+Built 2026-09-03 (evening), the same day as the proposal, so the three deliverables can go out together. Their own look rebuilt on their own bones: black ground, warm white type, their green, their horse, their photography and can shots. Fourteen static pages generated from one data file.
+
+| Path | What |
+|---|---|
+| `demo/data.mjs` | **Every business fact**: hours (three venues, breakfast window), the full taproom menu, the Commons breakfast menu, seven events with ISO dates, the tap snapshot, five brands and 40 beers, catering, Mug Club copy, the story. Change it here, rebuild, and it is right everywhere. |
+| `demo/build.mjs` | The generator. `node demo/build.mjs` writes the fourteen pages plus one `.ics` per event. The weekday under each event is derived from its date, never typed. Schema: `Brewery`+`Restaurant` on the home, `Menu` on the menu, one `Event` per listing. |
+| `demo/site.css`, `demo/site.js` | One stylesheet, one script. Everything in the script is an enhancement: with JavaScript off every page is complete. |
+| `demo/assets/` | 79 files, 3.0MB total. Pulled from Wix's CDN at layout sizes: cans, marks, posters and the logo as AVIF with alpha (the same can as WebP came down at 192KB, as AVIF 44KB), photos as WebP, the one PNG-sourced photo as JPEG. `demo/assets/og.jpg` is the demo's own link card, the client's, rendered from `demo/og-card.html`. |
+| `tools/serve.mjs` | Local static server mirroring `vercel.json` (`/` proposal, `cleanUrls`, `/demo/menu` → `demo/menu.html`). |
+| `tools/render-demo.mjs` | Walks all fourteen pages at 1280 and 390 through that server: page errors, console errors, overflow, broken images, 4xx, bytes per page, screenshots. Renders the demo card. |
+
+**What the demo does that the proposal promised:** `/demo/menu` is the menu (taproom, pizza, breakfast, tap list, each anchored, with `Menu` schema); the homepage shows all three venues' status computed from the Marshall clock (at 9:45 PM Thursday it read "Taproom open now · kitchen until 9 PM", "Commons opens Friday 7 AM", "General Store opens Friday 12 PM"); events show a weekday that comes from the date, "Free, no ticket needed", and an add-to-calendar file, and past ones remove themselves; the Mug Club page has renew and December-list flows; the age gate works once and is remembered; contact has `tel:`, `mailto:`, directions, all three hours blocks, and a map behind a click; the Instagram section is six photos, not eight video players; the tap list is rendered in-page from a snapshot of the Untappd board; the five brand pages are one system with each beer a card. Ordering still links to Toast's URL (the hostname move needs their account) and there is no workroom, both as the proposal says.
+
+**Measured (`tools/render-demo.mjs`, 2026-09-03):** 28 page renders, 0 errors, 0 overflow, 0 broken images, 0 4xx. Homepage 899KB desktop / 788KB phone, 28 requests, every one first-party (no web fonts; system stack). Contact 60KB (the Google Maps embed is a facade until asked for; it was 2.1MB with the iframe live). Brand pages 340 to 660KB because every can is on the page.
+
+**Placeholders in the demo, marked in `data.mjs` and here:**
+- Two event dates are inferred, not read: Boy Mob is on Sep 19 (their listing said Mon Sep 7, their description said Saturday the 19th) and The Fat Animals on Thu Sep 10 (their listing said Mon Sep 7 for a "Thursday" show). Confirm both with them.
+- Mug Club annual price and perks are not published anywhere, so the page says so in a dashed note instead of inventing them. The renew flow ends at a labeled checkout stand-in; nothing is charged or stored.
+- Mug count is 4,800 (their Mug Club page); their About page says 5,000+. One number, theirs to pick.
+- The tap list is a snapshot of the Untappd board on Sept 3, labeled as such on the page.
+- Merch links out to InkSoft; no product images were reachable.
+- The footer credit reads "Double Dipped by Glazed Web", the wording Kevin has chosen three times over `brand.md`'s "Concept build by". `standards.md` says ask per build, so: ask.
+- Menu fixes made on the way through: "Sweet Hawiian" spelled correctly, "Sundries Tomatoes" to sun-dried, and Mitten Chicken moved from Desserts, where their page had it, to Sandwiches. Their copy otherwise.
+- Photography and can shots are theirs, pulled from their site for a demo shown to them (same basis as Griffin Claw). Originals from them before launch.
 
 ### Facts the proposal states that were verified this session
 
@@ -244,11 +267,14 @@ Section four links to `darkhorse.glazedweb.com/demo` and describes it as built. 
 
 ### Before you send it (`proposal.md` checklist)
 
-- [ ] The demo is deployed at `/demo` and every route loads. **Blocking.**
+- [x] Vercel project created, `darkhorse.glazedweb.com` attached, `/` serves the proposal, `/pitch/darkhorse/og.jpg` returns 200 image/jpeg (checked 2026-09-03, 34KB).
+- [x] Pitch host sends `X-Robots-Tag: noindex, nofollow` (checked on the live host).
+- [x] Demo card exists and is the client's, separate from the proposal card (`demo/assets/og.jpg`).
+- [ ] After this push: `/demo`, `/demo/menu`, `/demo/mug-club`, `/demo/assets/og.jpg` and one `.ics` return 200 on `darkhorse.glazedweb.com`, and `/` still serves the proposal with `cleanUrls` on.
 - [ ] Kevin confirms the Mug Club system belongs inside $4,500, or the two lines named above are changed.
-- [ ] Vercel project created, `darkhorse.glazedweb.com` attached, `/` serves the proposal, `/pitch/darkhorse/og.jpg` returns 200 with an image type.
-- [ ] Pitch host and `.vercel.app` host both send `noindex` (the header is in `vercel.json`; confirm on the deployed URL).
-- [ ] Demo card exists and is the client's, separate from the proposal card (`link-cards.md`).
+- [ ] Kevin confirms the two inferred event dates and the mug count, or the demo carries them as they are.
+- [ ] Kevin rules the credit wording ("Double Dipped by" is in the footer now).
+- [ ] The `.vercel.app` host also sends `noindex` (same `vercel.json`, confirm once on that hostname).
 - [ ] Pasted into Messages and one non-Apple surface, and looked at.
 - [ ] The Toast "not accepting online orders" observation re-checked at an off-peak hour; if it was a one-off, soften finding two from a pattern to an instance (it is written as an instance now).
 - [ ] The mobile menu (2.6) opened on a physical phone. It is deliberately **not** in the proposal.
@@ -287,14 +313,16 @@ Kept as retractions, per `glaze.md`, so nobody re-derives them.
 | `pitch/darkhorse/og-card.html` | Source for the proposal's link card |
 | `pitch/darkhorse/og.jpg` | The rendered link card, 1200 x 630 |
 | `pitch/darkhorse/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon.png` | Glazed's icons, lifted not redrawn |
-| `tools/render.mjs` | Renders the card and screenshots the proposal at three widths; run from the glazedweb repo so playwright-core resolves |
-| `vercel.json` | Root rewrite to the pitch file, `noindex` header on every path |
+| `tools/render.mjs` | Renders the proposal card and screenshots the proposal at three widths; run from the glazedweb repo so playwright-core resolves |
+| `demo/` | The demo: `data.mjs` (facts), `build.mjs` (generator), `site.css`, `site.js`, `og-card.html`, the fourteen generated pages, `events/*.ics`, `assets/` |
+| `tools/serve.mjs`, `tools/render-demo.mjs` | Local server mirroring `vercel.json`, and the demo's render walk |
+| `vercel.json` | `cleanUrls`, root rewrite to the pitch file, `noindex` header on every path, `text/calendar` for the `.ics` files |
 | `audit/lighthouse-mobile-2026-09-03.json` | Compact Lighthouse summary: scores, metrics, failing audits, third-party breakdown, largest resources |
 
 ## Next steps
 
-- [ ] Build the demo (Griffin Claw pattern, their own look rebuilt on their own bones) and deploy it at `/demo`. Blocks sending.
-- [ ] Intake per `glaze/intake.md` before building: the three menus, the Mug Club rules and price, logo files and photography, Untappd for Business and Toast access.
+- [x] Build the demo (their own look rebuilt on their own bones) at `/demo`. Done 2026-09-03; deployment check is on the send list above.
+- [ ] Intake per `glaze/intake.md` before the real build: the Mug Club rules and price, original logo files and photography, Untappd for Business and Toast access, the domain login.
 - [ ] Open the mobile menu on a real phone; promote or retire 2.6.
 - [ ] Re-check Toast ordering availability at an off-peak hour.
 - [ ] Vercel project plus `darkhorse.glazedweb.com`.

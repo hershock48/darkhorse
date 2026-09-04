@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dark Horse Brewing Co.//Events//EN
+BEGIN:VEVENT
+UID:boy-mob@darkhorsebrewery.com
+DTSTAMP:20260904T014618Z
+DTSTART:20260919T220000Z
+DTEND:20260920T010000Z
+SUMMARY:Live Music: Boy Mob
+DESCRIPTION:Boy Band Night in the Garten.
+LOCATION:Dark Horse Brewing Co.\, 511 S. Kalamazoo Ave.\, Marshall\, MI 49068
+END:VEVENT
+END:VCALENDAR

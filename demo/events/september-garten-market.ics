@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dark Horse Brewing Co.//Events//EN
+BEGIN:VEVENT
+UID:september-garten-market@darkhorsebrewery.com
+DTSTAMP:20260904T014618Z
+DTSTART:20260927T150000Z
+DTEND:20260927T200000Z
+SUMMARY:September Garten Market
+DESCRIPTION:Vendors in the Garten, the last Sunday of the month, June through September. Drink and shop. Free to get in.
+LOCATION:Dark Horse Brewing Co.\, 511 S. Kalamazoo Ave.\, Marshall\, MI 49068
+END:VEVENT
+END:VCALENDAR

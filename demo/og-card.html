@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>demo og card</title>
+<style>
+/* The demo's link card. The client's own, entirely (glaze/link-cards.md): their photo,
+   their mark, their name. Rendered to demo/assets/og.jpg by tools/render-demo.mjs.
+   Everything readable sits inside x 285 to 915. */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px;overflow:hidden;background:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#f4f1ea}
+.card{position:relative;width:1200px;height:630px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 285px}
+.card img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:.55}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.2),rgba(10,10,10,.9))}
+.in{position:relative;z-index:1}
+.in img{width:150px;height:150px;margin:0 auto 18px}
+.k{font-size:20px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#3bac20;margin-bottom:12px}
+h1{font-size:64px;font-weight:900;letter-spacing:-2px;line-height:1;color:#fff}
+p{font-size:26px;color:#d9d3c7;margin-top:16px}
+</style></head><body>
+<div class="card">
+  <img class="bg" src="assets/og-demo-base.webp" alt="">
+  <div class="in">
+    <img src="assets/logo.avif" alt="">
+    <div class="k">Marshall, Michigan · Since 1997</div>
+    <h1>Dark Horse<br>Brewing Co.</h1>
+    <p>Brewery, taproom, kitchen, and Beer Garten.</p>
+  </div>
+</div>
+</body></html>
