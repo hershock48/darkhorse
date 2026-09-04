@@ -9,7 +9,7 @@
     if (!localStorage.getItem("dh21")) {
       var g = document.createElement("div");
       g.className = "gate"; g.setAttribute("role", "dialog"); g.setAttribute("aria-modal", "true"); g.setAttribute("aria-labelledby", "gateh");
-      g.innerHTML = '<div class="box"><img src="/demo/assets/logo.avif" alt="" width="88" height="88"><h2 id="gateh">Are you 21 or older?</h2><p class="mute">You have to be to come in. Same rule online.</p><div class="row"><button class="btn" id="gateYes">Yes, I am 21+</button><a class="btn ghost" href="https://www.choosemarshall.com/" rel="noopener">Not yet</a></div><p class="small">Please drink responsibly.</p></div>';
+      g.innerHTML = '<div class="box"><img src="/demo/assets/logo.avif" alt="" width="88" height="88"><h2 id="gateh">Are you 21 or older?</h2><div class="row"><button class="btn" id="gateYes">Yes, I am 21+</button><a class="btn ghost" href="https://www.choosemarshall.com/" rel="noopener">Not yet</a></div><p class="small">Please drink responsibly.</p></div>';
       document.body.appendChild(g); document.body.classList.add("gated");
       var y = document.getElementById("gateYes"); y.focus();
       y.addEventListener("click", function () { try { localStorage.setItem("dh21", "1"); } catch (e) {} g.remove(); document.body.classList.remove("gated"); });
