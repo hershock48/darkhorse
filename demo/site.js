@@ -4,17 +4,9 @@
   document.documentElement.classList.add("js");
   var TZ = "America/Detroit";
 
-  /* ---- age gate: once, remembered, injected so the no-JS page is whole ---- */
-  try {
-    if (!localStorage.getItem("dh21")) {
-      var g = document.createElement("div");
-      g.className = "gate"; g.setAttribute("role", "dialog"); g.setAttribute("aria-modal", "true"); g.setAttribute("aria-labelledby", "gateh");
-      g.innerHTML = '<div class="box"><img src="/demo/assets/logo.avif" alt="" width="88" height="88"><h2 id="gateh">Are you 21 or older?</h2><div class="row"><button class="btn" id="gateYes">Yes, I am 21+</button><a class="btn ghost" href="https://www.choosemarshall.com/" rel="noopener">Not yet</a></div><p class="small">Please drink responsibly.</p></div>';
-      document.body.appendChild(g); document.body.classList.add("gated");
-      var y = document.getElementById("gateYes"); y.focus();
-      y.addEventListener("click", function () { try { localStorage.setItem("dh21", "1"); } catch (e) {} g.remove(); document.body.classList.remove("gated"); });
-    }
-  } catch (e) {}
+  /* No age gate, on purpose (Kevin, 2026-09-09): everyone is welcome at the brewery,
+     the site is a restaurant's site as much as a brewery's, and their current 655KB
+     gate script never showed anyone anything anyway. */
 
   /* ---- open now: computed from the one hours table baked into the page ---- */
   function nowParts() {

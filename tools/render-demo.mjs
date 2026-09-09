@@ -38,7 +38,6 @@ const summary = { pages: {} };
 const routes = ["/demo", "/demo/menu", "/demo/events", "/demo/mug-club", "/demo/family", "/demo/dark-horse", "/demo/roak", "/demo/brew-detroit", "/demo/altes", "/demo/great-america", "/demo/catering", "/demo/merch", "/demo/contact", "/demo/about"];
 for (const [w, h, name] of [[1280, 900, "desk"], [390, 844, "phone"]]) {
   const context = await browser.newContext({ viewport: { width: w, height: h } });
-  // pre-accept the age gate for every page but the first, so the gate itself is screenshotted once
   for (const route of routes) {
     const page = await context.newPage();
     const errors = [], failed = [];
@@ -49,9 +48,6 @@ for (const [w, h, name] of [[1280, 900, "desk"], [390, 844, "phone"]]) {
     await page.goto(BASE + route, { waitUntil: "networkidle" });
     await page.addStyleTag({ content: "html{scroll-behavior:auto !important}" });
     const slug = route.replace("/demo", "").replace(/^\//, "") || "home";
-    if (route === "/demo") await page.screenshot({ path: path.join(OUT, `${name}-${slug}-gate.png`) });
-    // accept the gate
-    const yes = await page.$("#gateYes"); if (yes) { await yes.click(); await page.waitForTimeout(150); }
     const total = await page.evaluate(() => document.documentElement.scrollHeight);
     const stops = route === "/demo" ? [0, 0.14, 0.3, 0.46, 0.62, 0.78, 0.94] : [0, 0.35, 0.7];
     for (let i = 0; i < stops.length; i++) {
