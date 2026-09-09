@@ -116,6 +116,17 @@ nav a:hover{color:var(--pink-i)}
 .pricebox>div{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px}
 .pricebox .n{font-family:var(--sans);font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
 .pricebox .l{font-size:.85rem;color:var(--mute);margin-top:7px;line-height:1.4}
+/*
+  The melt, lifted from the Sprinkles pitch. .price-num is what counts; tabular figures so
+  the card does not jitter sideways while the digits change. .was is the struck market
+  anchor and it is the ONLY place the anchor lives in the markup: the number in the DOM is
+  the real price, and the script writes the anchor in and counts it down. Scripts blocked,
+  or reduced motion, and the reader sees $4,500.
+*/
+.pricebox .was{display:block;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.pricebox .was s{text-decoration-color:var(--pink);text-decoration-thickness:2px}
+.price-num{font-variant-numeric:tabular-nums}
+.pricesrc{font-size:.84rem;color:var(--mute);margin:-4px 0 18px}
 @media(max-width:600px){.pricebox{grid-template-columns:1fr}}
 
 /* demo cta */
@@ -337,6 +348,7 @@ footer .gmark{height:78px;width:auto}
     <tr><td>Old links</td><td>The previous site&rsquo;s blog and beer pages, still in Google, now Page Not Found</td><td>Redirected, so a decade of links to you lands on you</td></tr>
   </table>
 
+  <p style="margin-top:22px;font-size:1.05rem;color:var(--ink)"><strong>Launch: two to four weeks</strong> from a signed scope, depending on how much of the above we customize together and how quickly the first conversation settles it. The demo is the starting point, not a sketch, which is why the range is weeks and not months.</p>
   <p class="note">Two things in the demo are ours to flag and yours to supply. We built it with the can photography and the logo on your site today, pulled at the sizes Wix serves them, and we would want the originals from you before launch. Product photography is the one thing we cannot generate, so we will build around whatever you have, and we can tell you what sizes the layouts want if you would rather shoot fresh.</p>
 </div></section>
 
@@ -357,10 +369,11 @@ footer .gmark{height:78px;width:auto}
   <div class="k">Section five</div><div class="rule"></div>
   <h2>What it costs.</h2>
 
-  <div class="pricebox">
-    <div><div class="n">$4,500</div><div class="l">One-time build. Design, development, the Mug Club system, content migration, launch. Half to start, half on launch.</div></div>
-    <div><div class="n">$195<span style="font-size:1rem;color:var(--mute)">/mo</span></div><div class="l">Hosting, SSL, updates, security, backups, the workroom, and content edits whenever you would rather we made them.</div></div>
+  <div class="pricebox" id="pricecards">
+    <div><span class="was" aria-hidden="true">Untappd&rsquo;s own guide starts fully custom at <s>$10,000</s></span><div class="n">$<span class="price-num" data-from="10000" data-to="4500">4,500</span></div><div class="l">One-time build. Design, development, the Mug Club system, content migration, launch. Half to start, half on launch.</div></div>
+    <div><span class="was" aria-hidden="true">Same guide, ongoing: $100 to $500 a month</span><div class="n">$195<span style="font-size:1rem;color:var(--mute)">/mo</span></div><div class="l">Hosting, SSL, updates, security, backups, the workroom, and content edits whenever you would rather we made them.</div></div>
   </div>
+  <p class="pricesrc">The anchor is not ours. Untappd&rsquo;s guide for restaurants, bars and breweries puts a fully custom website at <strong>$10,000 to $20,000 upfront and $100 to $500 a month</strong>, and a mid-range one at $1,000 to $5,000 with fewer features. Everything in section three, the Mug Club system included, is the fully custom column. <a href="https://lounge.untappd.com/how-much-should-a-website-cost/" target="_blank" rel="noopener">Read the guide ↗</a></p>
   <p>That is <strong>$6,840</strong> across the first twelve months, then <strong>$2,340 a year</strong>. <strong>The Mug Club system is inside the $4,500</strong>: online signup, renewal with a card on file, member numbers, the December list, and the screen that tells you how many renewed. Not an add-on, not a phase two. Extra work beyond this scope is always quoted and approved before it starts, so nothing lands on your bill by surprise.</p>
 
   <h3>What the monthly replaces</h3>
@@ -375,7 +388,7 @@ footer .gmark{height:78px;width:auto}
   <div class="step"><div class="no">1</div><div><h4>Look at the demo</h4><p>Ten minutes: <a href="/demo" target="_blank" rel="noopener">darkhorse.glazedweb.com/demo</a>. It was built before this proposal, on our own time. If it is not right, that is useful information and it costs you nothing to say so.</p></div></div>
   <div class="step"><div class="no">2</div><div><h4>A conversation, not a pitch</h4><p>Half an hour, at the taproom or on a call. <a href="https://glazedweb.com/schedule" target="_blank" rel="noopener">Pick the time at glazedweb.com/schedule</a> and it lands in both calendars. Two questions we would want to ask: who needs to approve a website change, and what does your team actually need to update week to week without calling anybody?</p></div></div>
   <div class="step"><div class="no">3</div><div><h4>Find your Wix renewal date</h4><p>Wix plans are usually prepaid for the year and renew on their own. <strong>Find the date before you decide anything</strong>, including deciding to stay. We will happily build toward it; there is no reason to pay two vendors at once.</p></div></div>
-  <div class="step"><div class="no">4</div><div><h4>Build</h4><p>Roughly four to six weeks from a signed scope to launch. The variable is how fast menus, the Mug Club rules and photography come together on your side. The build itself runs to schedule.</p></div></div>
+  <div class="step"><div class="no">4</div><div><h4>Build</h4><p>Two to four weeks from a signed scope to launch, depending on how much we customize and how quickly the conversation settles it. Menus, the Mug Club rules and photography are the parts that come from your side; the build itself runs to schedule.</p></div></div>
 
   <h3>What we would need from you</h3>
   <p>The taproom, pizza and breakfast menus in any format, the Mug Club rules and price as they actually work today, logo files and whatever photography you have, access to Untappd for Business and Toast, the Network Solutions login, and one person empowered to say yes. That is genuinely the list.</p>
@@ -390,4 +403,55 @@ footer .gmark{height:78px;width:auto}
   </div>
   <svg class="gmark gl-foot" viewBox="0 0 200 250" overflow="visible" aria-hidden="true"><defs><linearGradient id="dgGrad" x1="0" y1="92" x2="0" y2="165" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5FA850"></stop><stop offset="100%" stop-color="#43813A"></stop></linearGradient><linearGradient id="lgGrad" x1="0" y1="92" x2="0" y2="215" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D9EDA0"></stop><stop offset="55%" stop-color="#BFE07A"></stop><stop offset="100%" stop-color="#A3CE55"></stop></linearGradient><radialGradient id="pinkGrad" cx="40%" cy="34%" r="75%"><stop offset="0%" stop-color="#F887B2"></stop><stop offset="55%" stop-color="#E84D8A"></stop><stop offset="100%" stop-color="#CE3672"></stop></radialGradient><linearGradient id="creepGrad" x1="0" y1="90" x2="0" y2="124" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#E3F2B0"></stop><stop offset="100%" stop-color="#C3E181"></stop></linearGradient></defs><g class="goo"><g fill="url(#dgGrad)"><ellipse cx="100" cy="110" rx="38" ry="15"></ellipse><path class="wobB" d="M 86 100 C 86 116, 87 130, 88 142 C 88 148, 91 149, 92 142 C 93 130, 92 114, 92 100 Z"></path><path d="M 114 100 C 114 112, 115 124, 116 134 C 116 140, 119 141, 120 134 C 121 124, 120 110, 120 100 Z"></path></g><g fill="url(#lgGrad)"><path class="wob1" d="M 64 100 C 63 120, 65 138, 66 152 C 66 164, 68 172, 74 173 C 80 172, 83 165, 82 154 C 84 136, 85 116, 86 100 Z"></path><path class="wob2" d="M 92 100 C 91 128, 93 152, 94 172 C 94 188, 97 199, 104 200 C 111 199, 114 190, 112 174 C 113 150, 114 124, 114 100 Z"></path><path class="wob3" d="M 120 100 C 119 116, 120 130, 121 142 C 121 152, 123 159, 129 160 C 134 159, 137 153, 135 144 C 136 130, 137 114, 137 100 Z"></path></g></g><path class="string" d="M 104 199 L 104 209" stroke="#BFE07A" stroke-width="2.5" stroke-linecap="round" fill="none"></path><g class="droplet"><circle cx="104" cy="213" r="7" fill="#BFE07A"></circle><circle cx="102" cy="211" r="2" fill="#F1F8DC" opacity="0.9"></circle></g><circle class="droplet2" cx="74" cy="186" r="4.5" fill="#BFE07A"></circle><circle cx="100" cy="70" r="52" fill="url(#pinkGrad)"></circle><path d="M 56 98 A 52 52 0 0 0 144 98 C 142 94, 138 92, 134 94 C 130 97, 129 102, 125 104 C 119 106, 116 98, 110 96 C 104 94, 103 102, 98 105 C 93 107, 90 100, 84 97 C 78 95, 76 100, 71 102 C 66 103, 62 100, 56 98 Z" fill="url(#creepGrad)"></path><path d="M 68 106 A 42 42 0 0 0 84 116" fill="none" stroke="#F1F8DC" stroke-width="4" stroke-linecap="round" opacity="0.85"></path><path d="M 97 144 Q 103 151 109 144" fill="none" stroke="#55974A" stroke-width="4" stroke-linecap="round"></path><g stroke="#F1F8DC" fill="none" stroke-linecap="round"><path d="M 97 128 C 96 148, 97 166, 100 182" stroke-width="4.5" opacity="0.85"></path><path d="M 69 118 C 68 132, 70 146, 71 156" stroke-width="3.5" opacity="0.8"></path><path d="M 124 114 C 123 124, 125 138, 126 148" stroke-width="3.5" opacity="0.8"></path></g><circle cx="100" cy="192" r="2.5" fill="#F1F8DC" opacity="0.9"></circle><circle cx="100" cy="72" r="13" fill="#201712"></circle><circle cx="100" cy="72" r="13" fill="none" stroke="#C22F6B" stroke-width="3" opacity="0.3"></circle><path class="sheen" d="M 62 46 A 44 44 0 0 1 82 28" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"></path><circle class="sheen" cx="92" cy="26" r="3.5" fill="#FFFFFF"></circle></svg>
 </div></footer>
+<script>
+/*
+  The price melt, lifted verbatim from the Sprinkles pitch, which lifted it from
+  glazedweb's components/homeEffects.js: same 1100ms, same cubic ease-out, same
+  idle / primed / counting machine keyed to how far the card has travelled up the
+  viewport, so scrolling back up re-arms it for the next pass.
+
+  The DOM already says 4,500. The anchor lives only in data-from and is written in
+  by this script, which is the rule: a reader with scripts blocked, or on reduced
+  motion, must never be looking at a price we are not charging.
+*/
+(function(){
+ var el=document.querySelector('#pricecards .price-num');
+ if(!el) return;
+ var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduced) return;
+ var card=el.closest('.pricebox > div')||el;
+ var from=parseFloat(el.dataset.from), to=parseFloat(el.dataset.to);
+ var fmt=function(v){return Math.round(v).toLocaleString('en-US');};
+ var status='idle', rafCount=0;
+ function cancelWork(){ if(rafCount) cancelAnimationFrame(rafCount); rafCount=0; }
+ function startCount(){
+  var dur=1100, start;
+  var tick=function(ts){
+   if(start===undefined) start=ts;
+   var p=Math.min(1,(ts-start)/dur);
+   var ease=1-Math.pow(1-p,3);
+   el.textContent=fmt(from+(to-from)*ease);
+   if(p<1) rafCount=requestAnimationFrame(tick); else status='done';
+  };
+  rafCount=requestAnimationFrame(tick);
+ }
+ var raf=0;
+ function update(){
+  raf=0;
+  var vh=window.innerHeight||1, r=card.getBoundingClientRect();
+  var cp=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height)));
+  if(cp>=0.45){
+   if(status==='idle'||status==='primed'){ status='counting'; startCount(); }
+  }else if(cp>=0.12&&cp<0.38){
+   if(status!=='primed'){ cancelWork(); el.textContent=fmt(from); status='primed'; }
+  }else if(cp<0.12){
+   if(status!=='idle'){ cancelWork(); el.textContent=fmt(to); status='idle'; }
+  }
+ }
+ function onScroll(){ if(!raf) raf=requestAnimationFrame(update); }
+ update();
+ window.addEventListener('scroll',onScroll,{passive:true});
+ window.addEventListener('resize',onScroll,{passive:true});
+})();
+</script>
 </body></html>
