@@ -218,7 +218,9 @@ Concrete, and short because the demo will say the rest.
 
 ## What it costs
 
-**Ruled by Kevin, 2026-09-03: priced like Griffin Claw, $4,500 build plus $195 a month.** That is what the proposal says. The proposal's price card lists "the Mug Club system" inside the $4,500, meaning online signup and renewal with a card on file, a member number, a December waitlist and an owner count screen. If that scope is more than the number is meant to carry, the line to change is the `.pricebox .l` text in `pitch/darkhorse/index.html` and the Mug Club row of the build table, before anything is sent.
+**Ruled by Kevin, 2026-09-03: priced like Griffin Claw, $4,500 build plus $195 a month.** That is what the proposal says. **Ruled again 2026-09-09: the Mug Club system (online signup and renewal with a card on file, member numbers, the December waitlist, the renewed-count screen) is inside the $4,500,** and the proposal says that in a sentence under the price, not only in the card's small print.
+
+**Keeping the proposal current with the demo.** Sections three and four describe the demo. Every time the demo changes, re-read both against it before sending: the build table's "already live in the demo" and "not in the demo" phrases, the demo card's list of what works, and any number quoted from the audit. The findings in section one carry dates and are re-verified against their live site before a send (last full re-verification 2026-09-09, see "Re-verification log" below).
 
 ## What happens next
 
@@ -271,6 +273,14 @@ Built 2026-09-03 (evening), the same day as the proposal, so the three deliverab
 - Menu fixes made on the way through: "Sweet Hawiian" spelled correctly, "Sundries Tomatoes" to sun-dried, and Mitten Chicken moved from Desserts, where their page had it, to Sandwiches. Their copy otherwise.
 - Photography and can shots are theirs, pulled from their site for a demo shown to them (same basis as Griffin Claw). Originals from them before launch.
 
+### Re-verification log
+
+Every claim in section one, checked against their live site before a send. Add a row each time.
+
+| Date | Result |
+|---|---|
+| 2026-09-09, 10:40 AM ET | **All nine findings hold.** Fake menu live at `/menu` and in the sitemap; homepage H1s still "Upcoming Events" and "JOIN OUR MAILING LIST", zero on `/about` and `/contact`; Wix favicon; no business schema; title "Home \| Dark Horse Brewing Company" with a 402-character description; About says 5,000+, Mug Club page says 4,800, renewal still "email emily@"; "satmeal" on `/roak`; `IMG_0081` alt on `/about`; `/family-of-brands-1` live, `/blog/` 404; the three hours blocks unchanged; Instagram embed still on the homepage. The age-gate script (`age.bestfreecdn.com/storage/js/age-4773.js`) still loads in a rendered page, injected client-side, so a plain HTML fetch does not show it: check it with a browser, not curl. Changed since Sept 3: the two Sep 7 events dropped off as past (finding 3 rewritten), Toast read "scheduled only" at 10 AM (finding 2 rewritten). |
+
 ### Facts the proposal states that were verified this session
 
 - Domain: `darkhorsebrewery.com` registered through Network Solutions, created 2005-02-11, expires 2029-02-11, nameservers `ns11/ns12.worldnic.com` (Verisign RDAP). Theirs, not Wix's.
@@ -283,7 +293,7 @@ Built 2026-09-03 (evening), the same day as the proposal, so the three deliverab
 - [x] Pitch host sends `X-Robots-Tag: noindex, nofollow` (checked on the live host).
 - [x] Demo card exists and is the client's, separate from the proposal card (`demo/assets/og.jpg`).
 - [x] Deployed and fetched on `darkhorse.glazedweb.com` (2026-09-03, deployment READY per the Vercel API, then one fetch): `/demo`, `/demo/menu`, `/demo/mug-club`, `/demo/events`, `/demo/contact`, both `og.jpg` files and `/demo/events/boy-mob.ics` (as `text/calendar`) all 200; `/demo/menu.html` 308s to the clean URL; `X-Robots-Tag: noindex, nofollow` on the custom host and the `.vercel.app` alias. **Trap, already hit once:** with `cleanUrls` on, the root rewrite destination must be `/pitch/darkhorse/index`, not `index.html`; the `.html` form turned the proposal into a 404 for about ninety seconds between `dfff21d` and `30002e7`.
-- [ ] Kevin confirms the Mug Club system belongs inside $4,500, or the two lines named above are changed.
+- [x] **Ruled by Kevin 2026-09-09: the Mug Club system is inside the $4,500.** The price section now says so in a sentence (signup, renewal with card on file, member numbers, the December list, the renewed-count screen; not an add-on, not a phase two) and the Mug Club row of the build table points to it.
 - [x] Mug count ruled: more than 5,000 (2026-09-09). The two inferred September dates have passed and dropped off on their own; refresh `demo/data.mjs` from their calendar the day the link goes out.
 - [x] Toast re-checked at an off-peak hour (Wed Sep 9, 10:00 AM): "Only accepting scheduled orders." Finding kept, rewritten as two dated visits plus the menu price mismatch.
 - [ ] Kevin rules the credit wording ("Double Dipped by" is in the footer now).
