@@ -7,6 +7,7 @@
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..");
 const types = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript", ".mjs": "text/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".ics": "text/calendar; charset=utf-8", ".json": "application/json" };
@@ -21,7 +22,15 @@ export function resolve(urlPath) {
 
 export function start(port = 4177) {
   return new Promise((ok) => {
-    const server = http.createServer((req, res) => {
+    const server = http.createServer(async (req, res) => {
+      if (req.url.split("?")[0] === "/api/taps") {
+        // mirrors api/taps.js so the render walk exercises the live swap
+        try {
+          const { fetchTaps } = await import(pathToFileURL(path.join(ROOT, "demo/taps.mjs")).href);
+          const taps = await fetchTaps();
+          res.writeHead(200, { "content-type": "application/json; charset=utf-8" }); return res.end(JSON.stringify(taps));
+        } catch (e) { res.writeHead(502, { "content-type": "application/json" }); return res.end(JSON.stringify({ error: String(e.message || e) })); }
+      }
       const f = resolve(req.url);
       if (!f) { res.writeHead(404, { "content-type": "text/plain" }); return res.end("404 " + req.url); }
       res.writeHead(200, { "content-type": types[path.extname(f)] || "application/octet-stream", "x-robots-tag": "noindex, nofollow" });

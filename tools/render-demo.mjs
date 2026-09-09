@@ -46,7 +46,8 @@ for (const [w, h, name] of [[1280, 900, "desk"], [390, 844, "phone"]]) {
     page.on("console", (m) => { if (m.type() === "error") errors.push("console: " + m.text().slice(0, 140)); });
     page.on("response", async (r) => { requests++; if (r.status() >= 400) failed.push(r.status() + " " + r.url().replace(BASE, "")); try { const b = await r.body(); bytes += b.length; } catch {} });
     await page.goto(BASE + route, { waitUntil: "networkidle" });
-    await page.addStyleTag({ content: "html{scroll-behavior:auto !important}" });
+    // end states only: no smooth scroll, and reveals land instantly so a screenshot never catches a half-faded card
+    await page.addStyleTag({ content: "html{scroll-behavior:auto !important} html.js .reveal{transition:none !important}" });
     const slug = route.replace("/demo", "").replace(/^\//, "") || "home";
     const total = await page.evaluate(() => document.documentElement.scrollHeight);
     const stops = route === "/demo" ? [0, 0.14, 0.3, 0.46, 0.62, 0.78, 0.94] : [0, 0.35, 0.7];

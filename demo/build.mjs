@@ -11,14 +11,24 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { site, venues, events, tapSnapshot, menu, breakfast, brands, catering, mugClub, story } from "./data.mjs";
+import { site, venues, events, tapSnapshot as fallbackTaps, menu, breakfast, brands, catering, mugClub, story } from "./data.mjs";
+import { fetchTaps, asOfLabel } from "./taps.mjs";
+
+// Bake the latest board so the no-JavaScript page is as fresh as the last build; fall back
+// to the snapshot in data.mjs if Untappd cannot be reached. site.js swaps in /api/taps live.
+let tapSnapshot = fallbackTaps, tapSource = "snapshot in data.mjs";
+try {
+  const live = await fetchTaps();
+  if (live.pours.length) { tapSnapshot = { asOf: asOfLabel(live.updatedAt), pours: live.pours }; tapSource = `Untappd board, updated ${tapSnapshot.asOf}`; }
+} catch (e) { tapSource += ` (Untappd unreachable at build: ${e.message})`; }
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const B = site.base, A = `${B}/assets`;
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-// Asset extensions follow how each was pulled (see the download notes in the README):
-// cans, marks, posters and the logo are AVIF with alpha; the one PNG-sourced photo is JPEG; photos are WebP.
-const ext = (n) => /^(strip-|dh-|roak-|bd-|altes-|ga-|brand-|ev-|logo$)/.test(n) ? "avif" : n === "brew-detroit-glass" ? "jpg" : "webp";
+// Asset extensions follow how each was made (see the README): marks, posters and the logo are
+// AVIF with alpha straight from Wix's CDN; cans are WebP with alpha, trimmed to their alpha
+// bounds by tools/trim-cans.mjs so equal boxes render equal cans; the one PNG-sourced photo is JPEG.
+const ext = (n) => /^(brand-|ev-|logo$)/.test(n) ? "avif" : n === "brew-detroit-glass" ? "jpg" : "webp";
 const src = (n) => `${A}/${n}.${ext(n)}`;
 const money = (n) => "$" + (Number.isInteger(n) ? n : n.toFixed(2));
 const TZ = "America/Detroit";
@@ -126,15 +136,15 @@ pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and b
 </div></section>
 <section><div class="wrap">
   <div class="grid g2" style="align-items:center;gap:40px">
-    <div><div class="k">Pouring now</div><h2>On tap today.</h2><p class="lead">Snapshot of the taproom board, ${tapSnapshot.asOf}. The live site reads the board itself, so this list is never older than the last pour.</p><a class="btn ghost" href="${B}/menu#tap">Full tap list</a></div>
-    <div class="taps">${tapSnapshot.pours.slice(0, 4).map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>
+    <div><div class="k">Pouring now</div><h2>On tap today.</h2><p class="lead" data-taps-note>Read straight from the taproom board on Untappd, last updated ${tapSnapshot.asOf}. When the bar changes a keg, this changes.</p><a class="btn ghost" href="${B}/menu#tap">Full tap list</a></div>
+    <div class="taps" data-live-taps data-limit="4">${tapSnapshot.pours.slice(0, 4).map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>
   </div>
 </div></section>
 <section><div class="wrap">
   <div class="k">The family</div><h2>Five labels, one brewhouse.</h2>
   <p class="lead">Dark Horse, ROAK, Brew Detroit, Altes, and Great America, all brewed in Marshall.</p>
   <div class="marks">${brands.map((b) => `<a href="${B}/${b.slug}" aria-label="${esc(b.name)}"><img src="${src(b.mark)}" alt="${esc(b.name)}" width="180" height="64" loading="lazy"></a>`).join("")}</div>
-  <div class="cans">${["strip-crooked-tree", "strip-limonata", "strip-devil-dog", "strip-cerveza-delray", "strip-altes", "strip-ga-lemonade"].map((c) => `<img src="${src(c)}" alt="" width="133" height="200" loading="lazy">`).join("")}</div>
+  <div class="cans">${["strip-crooked-tree", "strip-limonata", "strip-devil-dog", "strip-cerveza-delray", "strip-altes", "strip-ga-lemonade"].map((c, i) => `<img src="${src(c)}" alt="" width="133" height="200" loading="lazy" style="--i:${i}">`).join("")}</div>
 </div></section>
 <section><div class="wrap">
   <div class="k">In the Beer Garten</div><h2>Coming up.</h2>
@@ -167,8 +177,8 @@ ${pageHero("Taproom · Commons Market", "The menu.", "Kitchen closes an hour bef
 <div class="wrap" style="padding-top:8px"><div style="display:flex;gap:12px;flex-wrap:wrap;padding:18px 0"><a class="btn" href="${site.order}" rel="noopener">Order carryout</a><a class="btn ghost" href="tel:+1${site.phone.replace(/\D/g, "")}">Call ${site.phone}</a></div></div>
 ${menu.map((s) => `<section class="menu-sec" id="${s.id}"><div class="wrap"><h2>${s.name}</h2>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}<div class="items">${s.items.map(itemHTML).join("")}</div></div></section>`).join("")}
 <section class="menu-sec" id="breakfast"><div class="wrap"><div class="k">Commons Market</div><h2>Breakfast.</h2><p class="note">Thursday to Sunday, 7 to 11 AM. Call ${site.phoneExt2} to order ahead.</p><div class="items">${breakfast.map(itemHTML).join("")}</div></div></section>
-<section class="menu-sec" id="tap"><div class="wrap"><div class="k">Taproom board</div><h2>On tap.</h2><p class="note">Snapshot of the board on ${tapSnapshot.asOf}. On the live site this is the board, read from Untappd every few minutes, in your type instead of theirs.</p>
-<div class="taps">${tapSnapshot.pours.map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>
+<section class="menu-sec" id="tap"><div class="wrap"><div class="k">Taproom board</div><h2>On tap.</h2><p class="note" data-taps-note>The taproom board, read from Untappd, last updated ${tapSnapshot.asOf}. Same board the TV shows, in your type instead of theirs.</p>
+<div class="taps" data-live-taps>${tapSnapshot.pours.map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>
 <p style="margin-top:16px"><a class="btn ghost" href="${site.untappd}" rel="noopener">Check in on Untappd</a></p></div></section>` });
 
 /* ---------------- events ---------------- */
@@ -268,4 +278,4 @@ for (const p of pages) {
 fs.mkdirSync(path.join(here, "events"), { recursive: true });
 const ics = (e) => { const d = (s) => new Date(s).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, ""); return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Dark Horse Brewing Co.//Events//EN", "BEGIN:VEVENT", `UID:${e.slug}@darkhorsebrewery.com`, `DTSTAMP:${d(built.toISOString())}`, `DTSTART:${d(e.start)}`, `DTEND:${d(e.end)}`, `SUMMARY:${e.title}`, `DESCRIPTION:${e.blurb}`, `LOCATION:Dark Horse Brewing Co.\\, ${site.address.street}\\, ${site.address.city}\\, ${site.address.state} ${site.address.zip}`, "END:VEVENT", "END:VCALENDAR", ""].join("\r\n"); };
 for (const e of events) fs.writeFileSync(path.join(here, "events", `${e.slug}.ics`), ics(e));
-console.log(`built ${pages.length} pages, ${events.length} calendar files, ${upcoming.length} upcoming events as of ${built.toISOString().slice(0, 10)}`);
+console.log(`built ${pages.length} pages, ${events.length} calendar files, ${upcoming.length} upcoming events as of ${built.toISOString().slice(0, 10)}; taps: ${tapSnapshot.pours.length} pours from ${tapSource}`);

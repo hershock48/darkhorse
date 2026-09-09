@@ -77,6 +77,39 @@
       location.href = "mailto:" + f.getAttribute("data-mailto") + "?subject=" + encodeURIComponent(fd.get("subject") || "Website message") + "&body=" + encodeURIComponent(lines.join("\n"));
     });
   });
+  /* ---- live taps: swap the baked board for /api/taps when it answers; the baked one stays if it does not ---- */
+  var tapLists = document.querySelectorAll("[data-live-taps]");
+  if (tapLists.length && window.fetch) {
+    fetch("/api/taps", { headers: { accept: "application/json" } }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d || !d.pours || !d.pours.length) return;
+      tapLists.forEach(function (list) {
+        var limit = parseInt(list.getAttribute("data-limit") || "0", 10) || d.pours.length;
+        list.innerHTML = d.pours.slice(0, limit).map(function (p) {
+          return '<div class="tap"><div><b>' + esc(p.name) + '</b><div class="meta">' + esc([p.brand, p.style, p.abv].filter(Boolean).join(" · ")) + '</div></div><div class="prices">' + esc(p.prices.join(" · ")) + '</div></div>';
+        }).join("");
+      });
+      var when = new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "long", day: "numeric" }).format(new Date(d.updatedAt));
+      document.querySelectorAll("[data-taps-note]").forEach(function (n) { n.textContent = "Live from the taproom board on Untappd, last updated " + when + ". When the bar changes a keg, this changes."; });
+    }).catch(function () {});
+  }
+
+  /* ---- reveal on scroll: everything below the hero eases in once, staggered by position ---- */
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var targets = [];
+    document.querySelectorAll("main > section:not(.hero)").forEach(function (s) {
+      var wrap = s.querySelector(":scope > .wrap") || s;
+      Array.prototype.forEach.call(wrap.children, function (child) {
+        if (child.matches(".grid, .taps, .marks, .cans, .ig, .items")) {
+          Array.prototype.forEach.call(child.children, function (c, i) { c.classList.add("reveal"); c.style.setProperty("--i", Math.min(i, 8)); targets.push(c); });
+        } else if (!child.matches("script, style")) { child.classList.add("reveal"); targets.push(child); }
+      });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
   /* ---- map facade: the embed loads when somebody asks for it ---- */
   document.querySelectorAll("[data-map]").forEach(function (w) {
     var b = w.querySelector("[data-showmap]"); if (!b) return;

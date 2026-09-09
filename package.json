@@ -1,0 +1,10 @@
+{
+  "name": "darkhorse",
+  "private": true,
+  "type": "module",
+  "description": "Dark Horse Brewing Co. proposal and demo. Static pages plus one function, /api/taps.",
+  "scripts": {
+    "build:demo": "node demo/build.mjs",
+    "serve": "node tools/serve.mjs"
+  }
+}

@@ -188,4 +188,18 @@ footer.foot .legal a{color:var(--mute);text-decoration:none}
 @media(max-width:760px){.ig{grid-template-columns:repeat(3,1fr)}}
 .credit{font-size:.78rem;color:var(--dim)}
 .credit a{color:var(--mute)}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---- motion: transform and opacity only, short distances, all of it off under reduced motion ----
+   Reveal classes are added by site.js, so a page without JavaScript shows everything at once. */
+html.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*70ms)}
+html.js .reveal.in{opacity:1;transform:none}
+.hero img.bg{animation:drift 26s ease-in-out infinite alternate;transform-origin:50% 40%;will-change:transform}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.05)}}
+.cans img{animation:float 6.5s ease-in-out infinite;animation-delay:calc(var(--i,0)*-.85s);transition:transform .3s}
+.cans img:hover{transform:translateY(-10px) scale(1.04)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.chip:not(.closed) .dot{animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,172,32,.5)}70%{box-shadow:0 0 0 9px rgba(59,172,32,0)}100%{box-shadow:0 0 0 0 rgba(59,172,32,0)}}
+.card,.ev,.beer{transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);border-color:var(--line2)}
+.ig a img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html.js .reveal{opacity:1;transform:none}}
