@@ -108,7 +108,7 @@ const baseSchema = {
 const pages = [];
 
 /* ---------------- home ---------------- */
-pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and beer garden in Marshall, Michigan", desc: "Independent since 1997. Wood-fired pizza, breakfast Thursday to Sunday, live music in the Beer Garten, and a 4,800-mug Mug Club. 511 S. Kalamazoo Ave., Marshall.", current: "/", schema: baseSchema, body: `
+pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and beer garden in Marshall, Michigan", desc: "Independent since 1997. Wood-fired pizza, breakfast Thursday to Sunday, live music in the Beer Garten, and a Mug Club more than 5,000 strong. 511 S. Kalamazoo Ave., Marshall.", current: "/", schema: baseSchema, body: `
 <section class="hero" style="padding:0;border:0">
   <img class="bg" src="${A}/hero-general-store.webp" srcset="${A}/hero-general-store-800.webp 800w, ${A}/hero-general-store.webp 1800w" sizes="100vw" alt="The Dark Horse General Store in Marshall, a mint green pickup parked out front" width="1800" height="760" fetchpriority="high">
   <div class="wrap">
@@ -143,8 +143,8 @@ pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and b
   <p style="margin-top:18px"><a class="btn ghost" href="${B}/events">All events</a></p>
 </div></section>
 <section class="band" style="border:0"><img class="bg" src="${A}/mug-wall.webp" alt="" width="1600" height="640" loading="lazy"><div class="wrap">
-  <div class="k">Mug Club</div><h2>${site.mugClubCount} mugs on the wall.</h2>
-  <p class="lead">Handmade, numbered, and hanging in a spot you know by heart. New mugs drop once a year in December and people camp out for them. Renew online in a minute, or get on the December list.</p>
+  <div class="k">Mug Club</div><h2>More than ${site.mugClubCount} mugs on the wall.</h2>
+  <p class="lead">Handmade, numbered, and hanging in a spot you know by heart. ${esc(mugClub.perks)} New mugs drop once a year in December and people camp out for them. Renew online in a minute, or get on the December list.</p>
   <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="${B}/mug-club">Renew my mug</a><a class="btn ghost" href="${B}/mug-club#join">Get on the December list</a></div>
 </div></section>
 <section><div class="wrap">
@@ -180,12 +180,12 @@ ${pageHero("Beer Garten", "What's on.", "Live music most Thursdays and Saturdays
 
 /* ---------------- mug club ---------------- */
 pages.push({ path: "/mug-club", title: "Mug Club · Dark Horse Brewing Co.", desc: `More than ${site.mugClubCount} handmade mugs on the taproom wall. Renew online, or get on the list for the December release.`, current: "/mug-club", body: `
-<section class="hero" style="min-height:52vh;padding:0;border:0"><img class="bg" src="${A}/mug-wall.webp" alt="Rows of handmade ceramic mugs hanging from the taproom ceiling" width="1600" height="640" fetchpriority="high"><div class="wrap"><div class="k">Mug Club</div><h1>${site.mugClubCount} mugs. Every one has a name.</h1></div></section>
+<section class="hero" style="min-height:52vh;padding:0;border:0"><img class="bg" src="${A}/mug-wall.webp" alt="Rows of handmade ceramic mugs hanging from the taproom ceiling" width="1600" height="640" fetchpriority="high"><div class="wrap"><div class="k">Mug Club</div><h1>More than ${site.mugClubCount} mugs. Every one has a name.</h1></div></section>
 <section><div class="wrap"><div class="grid g2" style="gap:40px">
   <div><p class="lead">${esc(mugClub.intro)}</p><p>${esc(mugClub.release)}</p>
     <h3 style="margin-top:22px">How it works</h3>
-    <p class="mute">Your mug is yours. It hangs in its spot in the taproom, and members drink from it every visit. Renew each year to keep it on the wall. New mugs are released once a year in December, and the list below is how you hear about it first.</p>
-    <div class="demo-note"><b>Before launch.</b> Annual price and member perks are not published anywhere on the current site, so they are not invented here. Two facts from Dark Horse and they print in this space, on the homepage, and in the renewal receipt.</div>
+    <p class="mute">Your mug is yours. It hangs in its spot in the taproom, and members drink from it every visit. <strong style="color:#9fe58a">${esc(mugClub.perks)}</strong> Renew each year to keep it on the wall. New mugs are released once a year in December, and the list below is how you hear about it first.</p>
+    <div class="demo-note"><b>Before launch.</b> The annual price is not published anywhere on the current site, so it is not invented here. One number from Dark Horse and it prints in this space, on the homepage, and in the renewal receipt.</div>
   </div>
   <div class="card" style="padding:26px">
     <div class="tabs" role="tablist"><button role="tab" aria-controls="renew" aria-selected="true">Renew my mug</button><button role="tab" aria-controls="join" aria-selected="false">December list</button></div>

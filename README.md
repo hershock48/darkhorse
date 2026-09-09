@@ -17,7 +17,7 @@ Not a dated site, a broken one, and the two are pitched differently. A dated sit
 - The homepage's one primary button, ORDER CARRYOUT, opened to "Currently not accepting online orders" at 7:15 PM on a Thursday, inside kitchen hours.
 - Two of the three upcoming events on the homepage show a weekday in the title that contradicts the date under it. One event page manages three different dates for the same show.
 - On a phone, the homepage's own intro headline does not exist in the DOM.
-- Their Mug Club, 4,800 members strong by their own count, is run out of one employee's email inbox.
+- Their Mug Club, more than 5,000 members by their own count, is run out of one employee's email inbox.
 - The browser tab icon is Wix's default, not their horse.
 - Lighthouse mobile: 16.6MB, 250 requests, 243 of them third-party, Time to Interactive 42.7 seconds.
 
@@ -74,6 +74,8 @@ At a 375px viewport, "A NEW BREED," the heading over the intro paragraph on desk
 **2.2 The primary call to action opened to a dead end during service hours. (R, timestamped)**
 Every page's most prominent button, ORDER CARRYOUT, links to [Toast](https://order.toasttab.com/online/roak-brewing-co-dark-horse-brewing-511-s-kalamazoo-ave). At 7:15 PM Eastern on Thursday, September 3, with the taproom open until 10 and the kitchen until 9 by their own hours, the page read **"Currently not accepting online orders."** No explanation, no fallback, no phone number in view. Whether that was a deliberate switch-off during a rush or a configuration fault, the visitor cannot tell, and the site offers nothing else to do. (The full pizza menu, calzones, sandwiches and a Toast points program are all visible on that page and nowhere on their own site; see 3.3.)
 
+**Re-checked Wednesday, September 9, 10:00 AM Eastern (R):** the same page now reads **"Only accepting scheduled orders."** So it was not a one-off outage and it is not permanently closed: two visits, two states, neither explained, and nothing on their own site knows which one Toast is in. The re-check also surfaced a second fault: **the Toast menu and the website menu disagree.** Soup is a cup 6 / bowl 9 on `/brewery` and cup $5 / bowl $8 on Toast; Dark Onion Soup 9 versus $8; Toast lists Hot Dog ($2), Coney Dog ($3), Chips & Dip ($8) and a $15.18 "Sivarticus" that appear nowhere on the site. Pizza and sandwich prices match. The proposal's claim card was rewritten to carry both visits and the price mismatch.
+
 **2.3 "Buy Tickets" and a checkout, for free live music. (R)**
 Every event, including the Thursday and Saturday live music, shows a "Buy Tickets" button that opens a Wix Events checkout for a $0.00 General Admission ticket ([example](https://www.darkhorsebrewery.com/event-details/live-music-thursday-the-fat-animals-2)). A customer wanting to know whether they need a ticket is put through a purchase flow to find out they do not.
 
@@ -117,6 +119,8 @@ On the homepage and [`/events`](https://www.darkhorsebrewery.com/events):
 - "Live Music **Saturday**: Boy Mob" is listed as **Mon, Sep 07**. Its [detail page](https://www.darkhorsebrewery.com/event-details/live-music-saturday-boy-mob-1) shows Sep 07, 2026, 6 to 9 PM, and its description reads "Join us on Saturday, September 19th." Three dates, one show.
 - "Live Music **Thursday**: The Fat Animals" is listed as **Mon, Sep 07**.
 Their own Instagram caption, pulled into the homepage feed, says live music is "every Thursday and Saturday." September 7 is a Monday. These are placeholder dates that went live.
+
+**Re-checked Wednesday, September 9 (M):** Kevin asked whether Sep 7 might be a post date rather than the show date. It is the show date: Wix Events has no post-date field, the `Event` structured data on both detail pages carries `startDate 2026-09-07T18:00` (Boy Mob) and `T19:00` (Fat Animals) with `eventStatus: EventScheduled`, and, the decisive part, **both listings have now disappeared from Upcoming Events** on the homepage and `/events`, which today start at Sat, Sep 12. Wix retired them as past. So the Boy Mob show their own description places on Saturday the 19th is gone from their site ten days early. The proposal card now says so.
 
 **4.2 "An satmeal stout." (M)**
 [`/roak`](https://www.darkhorsebrewery.com/roak), Devil Dog description: "An satmeal stout that boasts a smooth, velvety texture." Two errors in three words on the flagship beer of an acquired brand.
@@ -188,7 +192,7 @@ The proposal's h1, per `glaze/proposal.md`. Here the answer is no in five separa
 2. **Ordering** is Toast, at a Toast URL with the wrong brewery's name in it. The points program lives there too.
 3. **The beer list** is Untappd, at a URL built for a TV screen.
 4. **Merch** is InkSoft.
-5. **The Mug Club**, the single most valuable customer asset they have, 4,800 people who camp out in December, exists as a spreadsheet and an inbox. If Emily leaves, the program's digital footprint leaves with her.
+5. **The Mug Club**, the single most valuable customer asset they have, more than 5,000 people who camp out in December, exists as a spreadsheet and an inbox. If Emily leaves, the program's digital footprint leaves with her.
 
 A visitor who wants to know the hours, see the menu, check the tap list, order a pizza, buy a shirt and renew a mug membership touches five companies and one employee. None of the five is Dark Horse.
 
@@ -251,8 +255,8 @@ Built 2026-09-03 (evening), the same day as the proposal, so the three deliverab
 
 **Placeholders in the demo, marked in `data.mjs` and here:**
 - Two event dates are inferred, not read: Boy Mob is on Sep 19 (their listing said Mon Sep 7, their description said Saturday the 19th) and The Fat Animals on Thu Sep 10 (their listing said Mon Sep 7 for a "Thursday" show). Confirm both with them.
-- Mug Club annual price and perks are not published anywhere, so the page says so in a dashed note instead of inventing them. The renew flow ends at a labeled checkout stand-in; nothing is charged or stored.
-- Mug count is 4,800 (their Mug Club page); their About page says 5,000+. One number, theirs to pick.
+- Mug Club annual price is not published anywhere, so the page says so in a dashed note instead of inventing it. **The perk is ruled (Kevin, 2026-09-09): "Every sixth fill is $1, on the punch card,"** and it prints on the Mug Club page and the homepage teaser. The renew flow ends at a labeled checkout stand-in; nothing is charged or stored.
+- Mug count **ruled (Kevin, 2026-09-09): "more than 5,000,"** which is what their About page says. Their Mug Club page's 4,800 stays in the audit as their inconsistency, not ours.
 - The tap list is a snapshot of the Untappd board on Sept 3, labeled as such on the page.
 - Merch links out to InkSoft; no product images were reachable.
 - The footer credit reads "Double Dipped by Glazed Web", the wording Kevin has chosen three times over `brand.md`'s "Concept build by". `standards.md` says ask per build, so: ask.
@@ -272,7 +276,8 @@ Built 2026-09-03 (evening), the same day as the proposal, so the three deliverab
 - [x] Demo card exists and is the client's, separate from the proposal card (`demo/assets/og.jpg`).
 - [x] Deployed and fetched on `darkhorse.glazedweb.com` (2026-09-03, deployment READY per the Vercel API, then one fetch): `/demo`, `/demo/menu`, `/demo/mug-club`, `/demo/events`, `/demo/contact`, both `og.jpg` files and `/demo/events/boy-mob.ics` (as `text/calendar`) all 200; `/demo/menu.html` 308s to the clean URL; `X-Robots-Tag: noindex, nofollow` on the custom host and the `.vercel.app` alias. **Trap, already hit once:** with `cleanUrls` on, the root rewrite destination must be `/pitch/darkhorse/index`, not `index.html`; the `.html` form turned the proposal into a 404 for about ninety seconds between `dfff21d` and `30002e7`.
 - [ ] Kevin confirms the Mug Club system belongs inside $4,500, or the two lines named above are changed.
-- [ ] Kevin confirms the two inferred event dates and the mug count, or the demo carries them as they are.
+- [x] Mug count ruled: more than 5,000 (2026-09-09). The two inferred September dates have passed and dropped off on their own; refresh `demo/data.mjs` from their calendar the day the link goes out.
+- [x] Toast re-checked at an off-peak hour (Wed Sep 9, 10:00 AM): "Only accepting scheduled orders." Finding kept, rewritten as two dated visits plus the menu price mismatch.
 - [ ] Kevin rules the credit wording ("Double Dipped by" is in the footer now).
 - [ ] The `.vercel.app` host also sends `noindex` (same `vercel.json`, confirm once on that hostname).
 - [ ] Pasted into Messages and one non-Apple surface, and looked at.
@@ -299,7 +304,7 @@ Kept as retractions, per `glaze.md`, so nobody re-derives them.
 ## Open and unverified
 
 - **The mobile menu (2.6).** Needs a physical phone. Do not present it until then.
-- **Whether Toast online ordering is switched off deliberately in the evenings.** We observed one timestamp. Worth a second check at a quieter hour before it goes in the proposal as a pattern rather than an instance.
+- **Whether Toast online ordering is switched off deliberately in the evenings.** Resolved as far as the proposal needs: Thu Sep 3, 7:15 PM, "Currently not accepting online orders"; Wed Sep 9, 10:00 AM, "Only accepting scheduled orders." The proposal states both and draws no conclusion about why.
 - **The age-gate script's intent.** It loads, it does nothing visible, it may be geo-gated or long dead. Either way it costs 655KB per visitor.
 - **Google Business Profile hours** against the three sets on the site. Not checked this session.
 - **Whether the "Menus (New)" pages are a half-finished migration** somebody is actively working on. If so, the fake menu finding is still true today and still indexable.

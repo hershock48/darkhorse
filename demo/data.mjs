@@ -24,7 +24,7 @@ export const site = {
   base: "/demo",
   origin: "https://darkhorse.glazedweb.com",
   founded: 1997,
-  mugClubCount: "4,800",   // their Mug Club page; their About page says 5,000+. PLACEHOLDER: owner to pick one.
+  mugClubCount: "5,000",   // always printed as "more than 5,000". Kevin, 2026-09-09; their About page agrees.
   managingPartner: "Chuck Mascari Jr.",
 };
 
@@ -254,11 +254,11 @@ export const catering = {
 };
 
 export const mugClub = {
-  intro: "With more than 4,800 mugs hanging throughout the taproom, our Mug Club is one of a kind. Each mug is handmade by Michigan artist Ryan Dalman of Marquette, individually owned by a member, and displayed in its exact spot in the taproom, a place members know by heart.",
+  intro: "With more than 5,000 mugs hanging throughout the taproom, our Mug Club is one of a kind. Each mug is handmade by Michigan artist Ryan Dalman of Marquette, individually owned by a member, and displayed in its exact spot in the taproom, a place members know by heart.",
   release: "New mugs are released once a year, typically in December, and the tradition has become legendary. Every year, loyal fans camp out and line up for the chance to claim one of the most sought-after mugs in Michigan craft beer.",
-  // PLACEHOLDER: the annual price and the member perks are not published anywhere on their site.
+  // PLACEHOLDER: the annual price is not published anywhere on their site. The perk is Kevin's, 2026-09-09.
   price: null,
-  perks: null,
+  perks: "Every sixth fill is $1, on the punch card.",
 };
 
 export const story = {
