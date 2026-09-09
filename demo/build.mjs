@@ -11,7 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { site, venues, events, tapSnapshot as fallbackTaps, menu, breakfast, brands, catering, mugClub, story } from "./data.mjs";
+import { site, venues, events, tapSnapshot as fallbackTaps, menu, breakfast, drinks, brands, catering, mugClub, story } from "./data.mjs";
 import { fetchTaps, asOfLabel } from "./taps.mjs";
 
 // Bake the latest board so the no-JavaScript page is as fresh as the last build; fall back
@@ -136,7 +136,7 @@ pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and b
 </div></section>
 <section><div class="wrap">
   <div class="grid g2" style="align-items:center;gap:40px">
-    <div><div class="k">Pouring now</div><h2>On tap today.</h2><p class="lead" data-taps-note>Read straight from the taproom board on Untappd, last updated ${tapSnapshot.asOf}. When the bar changes a keg, this changes.</p><a class="btn ghost" href="${B}/menu#tap">Full tap list</a></div>
+    <div><div class="k">Pouring now</div><h2>On tap today.</h2><p class="lead" data-taps-note>Read straight from the taproom board on Untappd, last updated ${tapSnapshot.asOf}. When the bar changes a keg, this changes.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost" href="${B}/menu#tap">Full tap list</a><a class="btn ghost" href="${B}/menu#cocktails">Gin and vodka from our still</a></div><p class="small mute" style="margin-top:14px">Also poured: Dark Horse Gin and Vodka cocktails, distilled here in Marshall, and Crooked Tree Cellars wine.</p></div>
     <div class="taps" data-live-taps data-limit="4">${tapSnapshot.pours.slice(0, 4).map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>
   </div>
 </div></section>
@@ -170,12 +170,13 @@ pages.push({ path: "/", title: "Dark Horse Brewing Co. · Brewery, taproom and b
 </div></section>` });
 
 /* ---------------- menu ---------------- */
-const menuSchema = { "@context": "https://schema.org", "@type": "Menu", name: "Dark Horse taproom menu", url: `${site.origin}${B}/menu`, hasMenuSection: menu.map((s) => ({ "@type": "MenuSection", name: s.name, hasMenuItem: s.items.map((it) => ({ "@type": "MenuItem", name: it.name, description: it.desc || undefined, offers: it.price ? { "@type": "Offer", price: String(it.price), priceCurrency: "USD" } : undefined })) })).concat([{ "@type": "MenuSection", name: "Commons breakfast", hasMenuItem: breakfast.map((it) => ({ "@type": "MenuItem", name: it.name, description: it.desc })) }]) };
-pages.push({ path: "/menu", title: "Menu · Dark Horse Brewing Co.", desc: "The taproom menu, wood-fired pizza, calzones, sandwiches, and the Commons breakfast, Thursday to Sunday 7 to 11 AM. Plus what's on tap.", current: "/menu", schema: menuSchema, body: `
+const menuSchema = { "@context": "https://schema.org", "@type": "Menu", name: "Dark Horse taproom menu", url: `${site.origin}${B}/menu`, hasMenuSection: menu.map((s) => ({ "@type": "MenuSection", name: s.name, hasMenuItem: s.items.map((it) => ({ "@type": "MenuItem", name: it.name, description: it.desc || undefined, offers: it.price ? { "@type": "Offer", price: String(it.price), priceCurrency: "USD" } : undefined })) })).concat(drinks.flatMap((d) => d.groups.map((g) => ({ "@type": "MenuSection", name: `${d.name}: ${g.name}`, hasMenuItem: g.items.map((it) => ({ "@type": "MenuItem", name: it.name, description: it.desc, offers: { "@type": "Offer", price: String(it.price), priceCurrency: "USD" } })) })))).concat([{ "@type": "MenuSection", name: "Commons breakfast", hasMenuItem: breakfast.map((it) => ({ "@type": "MenuItem", name: it.name, description: it.desc })) }]) };
+pages.push({ path: "/menu", title: "Menu · Dark Horse Brewing Co.", desc: "The taproom menu, wood-fired pizza, calzones, sandwiches, cocktails from our own gin and vodka, Crooked Tree Cellars wine, and the Commons breakfast, Thursday to Sunday 7 to 11 AM. Plus what's on tap.", current: "/menu", schema: menuSchema, body: `
 ${pageHero("Taproom · Commons Market", "The menu.", "Kitchen closes an hour before the taproom. Breakfast at the Commons, Thursday to Sunday, 7 to 11 AM. Gluten free options marked; ask your server.")}
-<div class="subnav"><div class="wrap">${menu.map((s) => `<a href="#${s.id}">${s.name}</a>`).join("")}<a href="#breakfast">Breakfast</a><a href="#tap">On tap</a></div></div>
+<div class="subnav"><div class="wrap">${menu.map((s) => `<a href="#${s.id}">${s.name}</a>`).join("")}${drinks.map((d) => `<a href="#${d.id}">${d.name}</a>`).join("")}<a href="#breakfast">Breakfast</a><a href="#tap">On tap</a></div></div>
 <div class="wrap" style="padding-top:8px"><div style="display:flex;gap:12px;flex-wrap:wrap;padding:18px 0"><a class="btn" href="${site.order}" rel="noopener">Order carryout</a><a class="btn ghost" href="tel:+1${site.phone.replace(/\D/g, "")}">Call ${site.phone}</a></div></div>
 ${menu.map((s) => `<section class="menu-sec" id="${s.id}"><div class="wrap"><h2>${s.name}</h2>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}<div class="items">${s.items.map(itemHTML).join("")}</div></div></section>`).join("")}
+${drinks.map((d) => `<section class="menu-sec" id="${d.id}"><div class="wrap"><div class="k">${esc(d.kicker)}</div><h2>${d.name}</h2><p class="note">${esc(d.note)}</p>${d.groups.map((g) => `<h3 style="margin:18px 0 6px">${esc(g.name)}</h3><div class="items">${g.items.map(itemHTML).join("")}</div>`).join("")}</div></section>`).join("")}
 <section class="menu-sec" id="breakfast"><div class="wrap"><div class="k">Commons Market</div><h2>Breakfast.</h2><p class="note">Thursday to Sunday, 7 to 11 AM. Call ${site.phoneExt2} to order ahead.</p><div class="items">${breakfast.map(itemHTML).join("")}</div></div></section>
 <section class="menu-sec" id="tap"><div class="wrap"><div class="k">Taproom board</div><h2>On tap.</h2><p class="note" data-taps-note>The taproom board, read from Untappd, last updated ${tapSnapshot.asOf}. Same board the TV shows, in your type instead of theirs.</p>
 <div class="taps" data-live-taps>${tapSnapshot.pours.map((p) => `<div class="tap"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.brand)} · ${esc(p.style)} · ${p.abv}</div></div><div class="prices">${p.prices.join(" · ")}</div></div>`).join("")}</div>

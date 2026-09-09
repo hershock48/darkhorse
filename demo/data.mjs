@@ -82,7 +82,7 @@ export const tapSnapshot = { asOf: "September 3, 2026", pours: [
 const gf = ["GF"];
 export const menu = [
   { id: "starters", name: "Starters", items: [
-    { name: "Cheese Bread", price: 11, desc: "Garlic, butter, pizza cheese, Parmesan. Ranch or pizza sauce on the side. Add jalapeños and bacon, 4." },
+    { name: "Cheese Bread", price: 11, desc: "Garlic butter, brick cheese, Parmesan. Ranch or pizza sauce on the side. Make it a Sivarticus: add jalapeños and bacon, 4." },
     { name: "Nachos", tags: gf, variants: [["Beef brisket", 15], ["Chicken", 13], ["Pulled pork", 13]], desc: "Tortilla chips, queso, lettuce, pico de gallo, black olives, sour cream, Crooked Tree salsa (salsa not GF)." },
     { name: "The Tacos", tags: gf, variants: [["Beef brisket", 12], ["Marinated sliced chicken", 10], ["Pulled pork", 10]], desc: "Cheese, pico de gallo, sour cream, with chips and Crooked Tree salsa (salsa not GF)." },
     { name: "Bavarian Pretzels", price: 11, desc: "Pretzel sticks with Boffo Brown beer cheese." },
@@ -143,9 +143,41 @@ export const menu = [
     { name: "Wild Mushroom White Truffle", variants: [["12\"", 17], ["16\"", 26]], desc: "Roasted wild mushrooms, house blend cheese, white truffle oil. Mushrooms grown locally by Sprout It." },
     { name: "Classic White Your Way", variants: [["12\"", 10], ["16\"", 15]], desc: "Olive oil, house blend cheese. Toppings extra. Add jalapeños to make it a Johnny Boy, 1.59 / 2.59." },
   ] },
-  { id: "desserts", name: "Desserts", items: [
-    { name: "Crème Brûlée", price: 8 },
+  { id: "desserts", name: "Desserts", note: "Available in the Taproom and the Beer Garten.", items: [
+    { name: "Dark Horse Crème Brûlée", price: 8 },
     { name: "Peanut Butter Pie", price: 8 },
+    { name: "Oatmeal Stout Chocolate Cake", price: 8 },
+  ] },
+];
+
+// The bar beyond beer, transcribed from the table-top menus in the taproom (photos from
+// Kevin, 2026-09-09). None of this is on their website today. The gin and vodka are their
+// own, distilled and bottled in Marshall; bottles sell at the Commons and the General Store.
+export const drinks = [
+  { id: "cocktails", name: "Cocktails", kicker: "From our own still", note: "Dark Horse American Gin and Dark Horse Vodka (100 percent wheat), both distilled and bottled by Dark Horse Brewing Co. in Marshall, 90 proof. Bottles of each are for sale at the Commons and the General Store.", groups: [
+    { name: "DH Gin", items: [
+      { name: "Spiked Raspberry Lemonade", price: 8, desc: "DH Gin with raspberry syrup, lemonade, a lemon slice, and mint." },
+      { name: "DH Gin Mojito", price: 8, desc: "Regular, raspberry, pomegranate, blackberry, or blueberry. DH Gin with lime juice, a fresh mint sprig, and soda." },
+      { name: "Gin & Juice", price: 7, desc: "DH Gin with grapefruit juice." },
+      { name: "DH Gin & Tonic", price: 7, desc: "DH Gin with tonic and fresh lime." },
+    ] },
+    { name: "DH Vodka", items: [
+      { name: "Super Duper White Russian", price: 8, desc: "DH coffee-infused vodka, half and half, Super Duper coffee." },
+      { name: "Dark Mule", price: 8, desc: "DH Vodka, Goslings ginger beer, and lime juice. Topped with a sprig of mint and a lime slice." },
+      { name: "Cape Cod", price: 7, desc: "DH Vodka, cranberry juice, a splash of soda and lime." },
+      { name: "Pom Fizz", price: 7, desc: "DH Vodka with pomegranate syrup, lime juice, and soda water. Topped with a lime slice." },
+      { name: "Bloody Mary", price: 9, desc: "DH Vodka with our house Bloody Mary mix and garnishes." },
+      { name: "Vanilla Coke", price: 7, desc: "DH vanilla-infused vodka with Coke. Topped with a maraschino cherry." },
+    ] },
+  ] },
+  { id: "wine", name: "Wine", kicker: "Crooked Tree Cellars", note: "Our label, made with Michigan's Fennville Winery. Any glass becomes a spritzer: soda water, lemon, lime, and ice. Bottles are for sale at the Commons and the General Store.", groups: [
+    { name: "By the glass", items: [
+      { name: "Meritage", price: 7, desc: "A red blend of Cabernet and Merlot. Notes of pepper and fruit. Pairs with our wood-fired pizza." },
+      { name: "Cabernet Sauvignon", price: 7, desc: "Dark fruit with herb and earthy notes. Pairs with our house-smoked pork and brisket." },
+      { name: "Chardonnay", price: 5, desc: "French oak, with notes of tropical fruit and vanilla. Pairs with our garlic Parmesan wings." },
+      { name: "Sauvignon Blanc", price: 5, desc: "Crisp and dry, known for its grapefruit notes. Pairs with the cheese bread." },
+      { name: "House-Made Blackberry Sangria", price: 8, desc: "Our Meritage red blend with lemonade, blackberry, and DH Vodka." },
+    ] },
   ] },
 ];
 
@@ -153,7 +185,7 @@ export const menu = [
 export const breakfast = [
   { name: "All-Marshall Breakfast", price: 11, desc: "Two eggs any style, hash browns, bacon or sausage, toast. Swap the toast for a pancake (1) or French toast (2)." },
   { name: "Biscuits & Gravy", variants: [["Half", 6], ["Full", 10]], desc: "Two warm, flaky biscuits under our creamy sausage gravy. A Dark Horse classic." },
-  { name: "Classic Omelette", price: 8, desc: "Three eggs and cheese, with toast. Add mushrooms, onions, green peppers, hash browns, bacon, sausage, or ham, 1.50 to 3." },
+  { name: "Classic Omelette", price: 8, desc: "Three eggs and cheese, with toast. Add mushrooms, onions, or green peppers 1.50; hash browns 2.50; bacon or sausage 3. Swap the toast for a pancake (1) or French toast (2)." },
   { name: "Crispy Chicken 'n Waffles", variants: [["Half", 8], ["Full", 14]], desc: "A crispy buttermilk chicken tender and a golden waffle, crowned with powdered sugar." },
   { name: "Double-Decker Pancakes", variants: [["Half stack", 4], ["Full stack", 7]], desc: "Two plate-sized pancakes." },
   { name: "Early Bird Breakfast Sandwich", price: 10, desc: "Egg, cheese, and hash browns on a brioche bun with bacon, sausage, or ham." },
@@ -161,8 +193,8 @@ export const breakfast = [
   { name: "French Toast", variants: [["Half", 5], ["Full", 10]], desc: "Two thick slices of Texas toast in eggs, milk, vanilla, cinnamon, and nutmeg." },
   { name: "Morning Gallop Breakfast Burrito", price: 12, desc: "Two eggs, cheese, onions, green peppers, and hash browns with bacon, sausage, or ham, wrapped in a tortilla." },
   { name: "Sunrise Breakfast Bowl", price: 12, desc: "Two eggs, hash browns, cheese, onions, and green peppers with bacon, sausage, or ham, topped with sausage gravy." },
-  { name: "Sides", desc: "Egg 2 · Hash browns 2.50 · Bacon 3 · Sausage 3 · Pancake 4 · Waffle 5 · Toast 3 · Hollandaise 3" },
-  { name: "Drinks", desc: "Coffee 3 · Cold brew 5 · Tea 3 · Juice 3 · Milk 3 · Soda 2 · Beermosa 6 · Bloody Mary 12" },
+  { name: "Sides", desc: "Egg 2 · Hash browns 2.50 · Bacon 3 · Sausage 3 · Pancake 4 · Waffle 5 · Toast (rye, Texas, focaccia, or wheat) 3 · 2 oz hollandaise 3" },
+  { name: "Drinks", desc: "Super Duper fresh coffee 3 · 12 oz Super Duper cold brew 5 · Hot tea 3 · Orange or grapefruit juice 3 · Milk 3 · Can of soda 2 · Beermosa 6 · Bloody Mary 12" },
 ];
 
 export const brands = [
