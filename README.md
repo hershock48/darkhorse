@@ -220,6 +220,8 @@ Concrete, and short because the demo will say the rest.
 
 **Ruled by Kevin, 2026-09-03: priced like Griffin Claw, $4,500 build plus $195 a month.** That is what the proposal says. **Ruled again 2026-09-09: the Mug Club system (online signup and renewal with a card on file, member numbers, the December waitlist, the renewed-count screen) is inside the $4,500,** and the proposal says that in a sentence under the price, not only in the card's small print.
 
+**The audience is Emily** (Kevin, 2026-09-09), the person whose inbox the Mug Club runs through today. **Nothing in the proposal may point at a person.** Every "one employee", "one inbox", "one mailbox" and her name were removed the same day and reframed to the arrangement: no online way to join, renew, or get release news. The "if she is out for a month" question was deleted, not softened. The hero reads "Four other companies do." When editing, grep the proposal for `emily|inbox|mailbox|employee|one person` before a send; the only legitimate hit is "one person empowered to say yes."
+
 **Keeping the proposal current with the demo.** Sections three and four describe the demo. Every time the demo changes, re-read both against it before sending: the build table's "already live in the demo" and "not in the demo" phrases, the demo card's list of what works, and any number quoted from the audit. The findings in section one carry dates and are re-verified against their live site before a send (last full re-verification 2026-09-09, see "Re-verification log" below).
 
 ## What happens next
@@ -279,6 +281,7 @@ Every claim in section one, checked against their live site before a send. Add a
 
 | Date | Result |
 |---|---|
+| 2026-09-09, 10:46 AM ET | **Lighthouse re-run (13.4, mobile):** Performance 74, LCP 6.2 s, TTI 42.4 s, 16,865 KiB, 248 requests, 241 third-party, Instagram 11,305 KB, Wix 4,560 KB, age script 655 KB with 566 KB unused, largest file a 2.9 MB Wix hero video, largest image a 2.3 MB Instagram photo. Same picture as Sept 3 (69 / 6.6 s / 42.7 s / 16,980 KiB). Claim four now carries these numbers; the Sept 3 figures stay in the verify chip. |
 | 2026-09-09, 10:40 AM ET | **All nine findings hold.** Fake menu live at `/menu` and in the sitemap; homepage H1s still "Upcoming Events" and "JOIN OUR MAILING LIST", zero on `/about` and `/contact`; Wix favicon; no business schema; title "Home \| Dark Horse Brewing Company" with a 402-character description; About says 5,000+, Mug Club page says 4,800, renewal still "email emily@"; "satmeal" on `/roak`; `IMG_0081` alt on `/about`; `/family-of-brands-1` live, `/blog/` 404; the three hours blocks unchanged; Instagram embed still on the homepage. The age-gate script (`age.bestfreecdn.com/storage/js/age-4773.js`) still loads in a rendered page, injected client-side, so a plain HTML fetch does not show it: check it with a browser, not curl. Changed since Sept 3: the two Sep 7 events dropped off as past (finding 3 rewritten), Toast read "scheduled only" at 10 AM (finding 2 rewritten). |
 
 ### Facts the proposal states that were verified this session
